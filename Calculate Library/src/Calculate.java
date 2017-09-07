@@ -32,8 +32,51 @@ public class Calculate {
 		return b*b - (4*a*c);
 	}
 	//converts mixed number into an improper fraction
-	public static string toImproperFrac(int wholeNum, int numerator, int denominator) {
+	public static String toImproperFrac(int wholeNum, int numerator, int denominator) {
 		int newNumerator = wholeNum*denominator + numerator;
-		return String (newNumerator + "/" + de)
+		return (newNumerator + "/" + denominator);
+	}
+	//converts improper fraction to mixed number
+	public static String toMixedNum(int numerator, int denominator) {
+		int wholeNum = numerator/denominator;
+		int newNumerator = numerator % denominator;
+		return (wholeNum + "_" + newNumerator + "/" + denominator);
+	}
+	//foils a quadratic equation
+	public static String foil(int a,int b, int c, int d, String x) {
+		int newA = a*c;
+		int newB = (a*d) + (b*c);
+		int newC = b*d;
+		return (newA + x +"^2 + " + newB + x + "+ " + newC);	
+	}
+	//sees if one int is divisible by another and returns a boolean
+	public static boolean isDivisibleBy(int operandOne, int operandTwo) {
+		if(operandOne % operandTwo == 0) {
+			return true;
+		}else if(operandTwo % operandOne ==0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	//returns absolute value of a number
+	public static double absValue(double operand) {
+		if(operand <0) {
+			return operand*-1;
+		}else {
+			return operand;
+		}
+	}
+	//returns the bigger number of two numbers
+	public static double max(double numOne, double numTwo) {
+		if(numOne>numTwo) {
+			return numOne;
+		}else {
+			return numTwo;
+		}
+	}
+	//returns the largest number of three numbers
+	public static double max(double numOne,double numTwo, double numThree) {
+		
 	}
 }
