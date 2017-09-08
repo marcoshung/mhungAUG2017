@@ -18,6 +18,7 @@ public class DoMath {
 		System.out.println(Calculate.isDivisibleBy(16, -2));
 		System.out.println(Calculate.absValue(-43));
 		System.out.println(Calculate.max(-10,-18));
+		System.out.println(Calculate.max(-1,-2,-3));
 		
 	}
 

@@ -77,6 +77,16 @@ public class Calculate {
 	}
 	//returns the largest number of three numbers
 	public static double max(double numOne,double numTwo, double numThree) {
-		
+		if(numOne>=numTwo && numOne>=numThree) {
+			return numOne;
+		}else if(numTwo>=numOne && numTwo>=numThree) {
+			return numTwo;
+		}else {
+			return numThree;
+		}
+	}
+	//rounds double value to 2 decimal places
+	public static double round2(double operand) {
+		int determinant = operand/1;
 	}
 }
