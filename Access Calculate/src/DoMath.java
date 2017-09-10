@@ -19,7 +19,7 @@ public class DoMath {
 		System.out.println(Calculate.absValue(-43));
 		System.out.println(Calculate.max(-10,-18));
 		System.out.println(Calculate.max(-1,-2,-3));
-		
+		System.out.println(Calculate.round2(1.24223));
 	}
 
 }

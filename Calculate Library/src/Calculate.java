@@ -86,7 +86,11 @@ public class Calculate {
 		}
 	}
 	//rounds double value to 2 decimal places
+	// 2.7745 -
 	public static double round2(double operand) {
-		int determinant = operand/1;
+		double newOperand = operand*100 + .5;
+		int num = (int) (newOperand);
+		return ((double) (num))/100;
+		
 	}
 }
