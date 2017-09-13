@@ -69,7 +69,7 @@ public class Calculate {
 	}
 	//returns the bigger number of two numbers
 	public static double max(double numOne, double numTwo) {
-		if(numOne>numTwo) {
+		if(numOne>=numTwo) {
 			return numOne;
 		}else {
 			return numTwo;
@@ -85,12 +85,48 @@ public class Calculate {
 			return numThree;
 		}
 	}
+	//returns the smallest number of two intergers
+	public static int min(int numOne, int numTwo) {
+		if(numOne <= numTwo) {
+			return numOne;
+		}else {
+			return numTwo;
+		}
+	}
 	//rounds double value to 2 decimal places
-	// 2.7745 -
 	public static double round2(double operand) {
 		double newOperand = operand*100 + .5;
 		int num = (int) (newOperand);
 		return ((double) (num))/100;
-		
+	}
+	public static double exponent(double operand, int exponent) {
+		double multiply = operand;
+		for(int i = 1; i<exponent;i++) {
+			operand *= multiply;
+		}
+		return operand;
+	}
+	public static int factorial (int operand) {
+		int multiply = operand;
+		while(multiply != 1){
+			multiply --;
+			operand *= multiply;
+		}
+		return operand;
+	}
+	public static boolean isPrime(int operand) {
+		int multiple = operand--;
+		boolean prime = true;
+		while(multiple > 1) {
+			prime = isDivisibleBy(operand,multiple);
+			multiple --;
+			if(prime == true){
+				multiple=1;
+				prime = false;
+			}else{
+				prime = true;
+			}
+		}
+		return prime;
 	}
 }
