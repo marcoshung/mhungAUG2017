@@ -85,7 +85,7 @@ public class Calculate {
 			return numThree;
 		}
 	}
-	//returns the smallest number of two intergers
+	//returns the smallest number of two integers
 	public static int min(int numOne, int numTwo) {
 		if(numOne <= numTwo) {
 			return numOne;
@@ -95,10 +95,19 @@ public class Calculate {
 	}
 	//rounds double value to 2 decimal places
 	public static double round2(double operand) {
-		double newOperand = operand*100 + .5;
-		int num = (int) (newOperand);
-		return ((double) (num))/100;
+		if(operand >0) {
+			double newOperand = operand*100 + .5;
+			int num = (int) (newOperand);
+			return ((double) (num))/100;
+		}else {
+			double newOperand = operand*100 - .5;
+			int num = (int) (newOperand);
+			return ((double) (num))/100;
+		}
+		
 	}
+//part 3
+	//take the first number and takes the power to the 2nd number of it
 	public static double exponent(double operand, int exponent) {
 		double multiply = operand;
 		for(int i = 1; i<exponent;i++) {
@@ -106,6 +115,7 @@ public class Calculate {
 		}
 		return operand;
 	}
+	//takes the factorial of a number
 	public static int factorial (int operand) {
 		int multiply = operand;
 		while(multiply != 1){
@@ -114,8 +124,9 @@ public class Calculate {
 		}
 		return operand;
 	}
+	//returns true if a num is prime, false if not
 	public static boolean isPrime(int operand) {
-		int multiple = operand--;
+		int multiple = operand- 1;
 		boolean prime = true;
 		while(multiple > 1) {
 			prime = isDivisibleBy(operand,multiple);
@@ -128,5 +139,22 @@ public class Calculate {
 			}
 		}
 		return prime;
+	}
+	//Finds greatest common factor of two integers
+	public static int gcf(int numOne, int numTwo) {
+		if(numOne>= numTwo) {
+			int gcf = numTwo;
+			while(numTwo % gcf !=0 && numOne % gcf !=0) {
+				gcf--;
+			}
+			return gcf;
+		}else {
+			int gcf = numOne;
+			while(numTwo%gcf != 0 && numOne % gcf != 0) {
+				gcf--;
+			}
+			return gcf;
+		}
+		
 	}
 }
