@@ -142,19 +142,31 @@ public class Calculate {
 	}
 	//Finds greatest common factor of two integers
 	public static int gcf(int numOne, int numTwo) {
-		if(numOne>= numTwo) {
-			int gcf = numTwo;
-			while(numTwo % gcf !=0 && numOne % gcf !=0) {
-				gcf--;
+		if(numOne>=numTwo) {
+			int factor = numTwo;
+			while(numTwo % factor !=0 || numOne % factor != 0){
+				factor--;
 			}
-			return gcf;
+			return factor;
 		}else {
-			int gcf = numOne;
-			while(numTwo%gcf != 0 && numOne % gcf != 0) {
-				gcf--;
+			int factor = numOne;
+			while(numTwo % factor != 0 || numOne % factor != 0){
+				factor--;
 			}
-			return gcf;
+			return factor;
 		}
-		
+	}
+	public static double sqrt(double operand) {
+		if(operand < 0) {
+			throw new IllegalArgumentException("Cannot square root negatives");
+		}
+		double intOne = 0;
+		double sqrt = operand/2;
+		do {
+			operand = sqrt;
+			sqrt = operand+(sqrt/operand)/2;
+		}
+		while(intOne - sqrt !=0);
+			return Calculate.round2(sqrt);
 	}
 }
