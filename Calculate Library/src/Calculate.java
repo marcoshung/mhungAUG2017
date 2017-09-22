@@ -184,4 +184,11 @@ public class Calculate {
 		while(intOne - sqrt !=0);
 			return Calculate.round2(sqrt);
 	}
+	public static double min(double numOne, double numTwo) {
+		if(numOne <= numTwo) {
+			return numOne;
+		}else {
+			return numTwo;
+		}
+	}
 }
