@@ -51,6 +51,9 @@ public class Calculate {
 	}
 	//sees if one int is divisible by another and returns a boolean
 	public static boolean isDivisibleBy(int operandOne, int operandTwo) {
+		if(operandTwo ==0) {
+			throw new IllegalArgumentException("Cannot divide by 0");
+		}
 		if(operandOne % operandTwo == 0) {
 			return true;
 		}else if(operandTwo % operandOne ==0) {
@@ -109,6 +112,12 @@ public class Calculate {
 //part 3
 	//take the first number and takes the power to the 2nd number of it
 	public static double exponent(double operand, int exponent) {
+		if(exponent < 0) {
+			throw new IllegalArgumentException("Cannot take negative exponents");
+		}
+		if(exponent ==0) {
+			return 1;
+		}
 		double multiply = operand;
 		for(int i = 1; i<exponent;i++) {
 			operand *= multiply;
@@ -117,6 +126,12 @@ public class Calculate {
 	}
 	//takes the factorial of a number
 	public static int factorial (int operand) {
+		if(operand <0) {
+			throw new IllegalArgumentException("Cannot take factorial of negative numbers");
+		}
+		if(operand == 0) {
+			return 1;
+		}
 		int multiply = operand;
 		while(multiply != 1){
 			multiply --;
