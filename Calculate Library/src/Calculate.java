@@ -191,4 +191,12 @@ public class Calculate {
 			return numTwo;
 		}
 	}
+	public static String quadForm(int a, int b, int c) {
+		double discriminant = discriminant(a,b,c);
+		if(discriminant < 0) {
+			return ("no real roots");
+		}else {
+			
+		}
+	}
 }
