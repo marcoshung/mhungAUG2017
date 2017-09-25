@@ -196,7 +196,20 @@ public class Calculate {
 		if(discriminant < 0) {
 			return ("no real roots");
 		}else {
-			
+			double rootOne = (-b+ sqrt(discriminant))/(2*a);
+			double rootTwo = (-b- sqrt(discriminant))/(2*a);
+			if(rootOne != rootTwo) {
+				rootOne = round2(rootOne);
+				rootTwo = round2(rootTwo);
+				if(rootOne > rootTwo) {
+					return rootTwo + " and " + rootOne;
+				}else {
+					return rootOne + " and " + rootTwo;
+				}
+			}else {
+				rootOne = round2(rootOne);
+				return rootOne +"";
+			}
 		}
 	}
 }
