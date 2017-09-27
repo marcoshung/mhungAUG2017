@@ -3,15 +3,15 @@
  * Our self written math library. It contains a series of methods to do basic math problems.
 */
 public class Calculate {
-	//Will square number
+	//Will square an integer
 	public static int square(int operand) {
 		return operand*operand;
 	}
-	//Will cube number
+	//Will cube an integer
 	public static int cube(int operand) {
 		return operand*operand*operand;
 	}
-	//Will give an average of two numbers
+	//Will give an average of two double numbers
 	public static double average(double numberOne,double numberTwo) {
 		return (numberOne + numberTwo)/2;
 	}
@@ -129,6 +129,7 @@ public class Calculate {
 		if(operand <0) {
 			throw new IllegalArgumentException("Cannot take factorial of negative numbers");
 		}
+		//returns 1 because 0 factorial is 1;
 		if(operand == 0) {
 			return 1;
 		}
@@ -171,31 +172,41 @@ public class Calculate {
 			return factor;
 		}
 	}
+	// returns the square root of a number.
 	public static double sqrt(double operand) {
 		if(operand < 0) {
 			throw new IllegalArgumentException("Cannot square root negatives");
+		}else if(operand == 0) {
+			return 0;
 		}
 		double intOne = 0;
-		double sqrt = operand/2;
-		do {
-			operand = sqrt;
-			sqrt = operand+(sqrt/operand)/2;
+		while(intOne * intOne <operand) {
+			intOne++;
 		}
-		while(intOne - sqrt !=0);
-			return Calculate.round2(sqrt);
+		if((intOne *intOne) % operand == 0) {
+			return intOne;
+		}else {
+			return .5 * (operand/intOne + intOne);
+		}
 	}
+	//returns the smaller of two numbers
 	public static double min(double numOne, double numTwo) {
 		if(numOne <= numTwo) {
 			return numOne;
 		}else {
 			return numTwo;
 		}
+		
 	}
+	//approximates real roots of a quadratic equation
 	public static String quadForm(int a, int b, int c) {
 		double discriminant = discriminant(a,b,c);
 		if(discriminant < 0) {
 			return ("no real roots");
 		}else {
+			if(a == 0) {
+				throw new IllegalArgumentException("Not a quadratic equation");
+			}
 			double rootOne = (-b+ sqrt(discriminant))/(2*a);
 			double rootTwo = (-b- sqrt(discriminant))/(2*a);
 			if(rootOne != rootTwo) {
