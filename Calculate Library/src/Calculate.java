@@ -179,14 +179,14 @@ public class Calculate {
 		}else if(operand == 0) {
 			return 0;
 		}
-		double intOne = 0;
-		while(intOne * intOne <operand) {
-			intOne++;
+		double numOne = 0;
+		while(numOne * numOne <operand) {
+			numOne++;
 		}
-		if((intOne *intOne) % operand == 0) {
-			return intOne;
+		if((numOne *numOne) % operand == 0) {
+			return numOne;
 		}else {
-			return .5 * (operand/intOne + intOne);
+			return .5 * (operand/numOne + numOne);
 		}
 	}
 	//returns the smaller of two numbers
