@@ -1,19 +1,21 @@
 //Marcos Hung, period 2
-import java.util.Scanner;
+import java.util.*;
+//Takes user input and prints : all even numbers, sum, min, max, and largest even number
 public class PairProject {
 		public static void main(String [] args) {
 			Scanner userInput = new Scanner(System.in);
-			System.out.println("Enter a number");
 			int max = 0;
 			int min = 0;
 			int sum = 0;
 			int largestEven = 0;
 			String Even = "";
-			boolean done = false;
-			int num = userInput.nextInt();
-			while(!done) {
-				System.out.println("Are we finished? If so enter done.");
-				if(sum ==0) {
+			int count = 0;
+			System.out.println("How many numbers will you enter?");
+			int quantity = userInput.nextInt();
+			System.out.println("enter your numbers");
+			 while(count < quantity){
+				int num = userInput.nextInt();
+				if(sum == 0) {
 					min = num;
 					max = num;
 				}
@@ -30,15 +32,13 @@ public class PairProject {
 				if(num < min) {
 					min = num;
 				}
-				String completed = userInput.next();
-				if(completed.equals("done")) {
-					done = true;
-				}
+				count++;
 			}
-			System.out.println(Even);
+			System.out.println("These are all the even numbers entered: " + Even);
 			System.out.println("The smallest number is " + min);
 			System.out.println("The largest number is " + max);
-			System.out.println(largestEven);
-			System.out.println(sum);
+			System.out.println("The largest Even number is " +largestEven);
+			System.out.println("The sum is " + sum);
 	}
+		
 }
