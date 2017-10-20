@@ -1,4 +1,5 @@
-
+//Marcos Hung
+//Period 2
 public class Quadratic {
 	public static double sqrt(double operand) {
 		if(operand < 0) {

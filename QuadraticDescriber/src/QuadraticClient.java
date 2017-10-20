@@ -1,3 +1,5 @@
+//Marcos Hung
+//Period 2
 import java.util.*;
 public class QuadraticClient {
 	public static void main(String [] args) {
@@ -29,8 +31,8 @@ public class QuadraticClient {
 			summary += "Opens: down \n";
 		}
 		//axis of symmetry
-		double axis = -b/(2*a);
-		summary += "Axis of Symmetry: " + Quadratic.round2(axis) +"\n";
+		double axis = Quadratic.round2(-b/(2*a));
+		summary += "Axis of Symmetry: " + axis +"\n";
 		//vertex
 		double yValue= (a * Quadratic.exponent(axis, 2)) + (b *axis) + c;
 		summary += "Vertex: <" + axis + "," +Quadratic.round2(yValue) + ">\n";
