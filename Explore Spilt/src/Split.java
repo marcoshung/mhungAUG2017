@@ -15,19 +15,23 @@ public class Split {
 		//play around with String.split! 
 		//What happens if you "I reallyreally likeapples".split("really") ?
 		System.out.println(Arrays.toString("applespineapplesbreadlettustomatobaconmayohambreadcheese".split("bread"))); 
-		System.out.println(Arrays.toString("I reallyreally like apples!".split("really")));
-		System.out.println(getFilling("applespineapplesbreadlettustomatobaconmayohambreadcheese"));
+		System.out.println(Arrays.toString("apple bread tom bread let l bread q".split("bread")));
+		System.out.println(getFilling("bread ham bread"));
 	}
 	public static String getFilling(String sandwich) {
 		String[] array = sandwich.split("bread");
 		int breaks = array.length;
+		String filling = "";
 		if(breaks == 3) {
-			return array[1];
-		}else if(breaks == 1 || breaks == 0) {
-			return "not a sandwich";
+			filling += array[1];
+		}else if(breaks == 1 || breaks == 0 || breaks == 2) {
+			filling = "not a sandwich";
 		}else if(breaks > 3) {
-			
+			if(breaks % 2 == 0) {
+				
+			}
 		}
+		return filling;
 		
 		//Your task Part 1:
 		/*Write a method that take in a string like "applespineapplesbreadlettustomatobaconmayohambreadcheese" describing a sandwich
