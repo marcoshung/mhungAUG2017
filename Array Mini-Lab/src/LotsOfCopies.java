@@ -9,12 +9,13 @@ public class LotsOfCopies {
 		System.out.println(num);
 		System.out.println(strMain);
 		System.out.println(Arrays.toString(arrMain));
-		String startValue = "HEY";
-		String newValue = "HI";
-		String a = startValue;
-		String b = a;
+		int[] startValue = {1,2,3};
+		int[] newValue = {4,5,6};
+		int[] a = startValue;
+		int[] b =a;
 		a = newValue;
-		System.out.println(a + " " + b);
+		System.out.println(Arrays.toString(a));
+		System.out.println(Arrays.toString(b));
 		
 	}
 	public static void changeMe(int x,String str, int[] arr) {
