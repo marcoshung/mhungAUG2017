@@ -63,43 +63,20 @@ public class Split {
 	public static String getFillingSpaces(String sandwich) {
 		String filling = "";
 		String[] array = sandwich.split(" ");
-		int count = 0;
-		int i = 0;
-		while(i < array.length) {
-			if(array[i].equals("bread") || array[i].equals(" bread")) {
-				count++;
+		Boolean seenBread = false;
+		String temp = "";
+		for(int i = 0;i<array.length;i++) {
+			if(array[i].equals ("bread")) {
+				seenBread = true;
+				filling += temp;
+				temp = "";
+			}else if(seenBread) {
+				temp += array[i] + " ";
+				
 			}
-			i++;
 		}
-		System.out.println(count);
-		if(count ==0 || count == 1) {
+		if(filling.equals("")) {
 			filling = "not a sandwich";
-		}else if(count == 2 && array.length == 2){
-			filling = "nothing inside sandwich";
-		}else if(array[0] != "bread"){
-			int limit = 0;
-			for(i = 1;i< array.length; i++) {
-				if(array[i] != "bread") {
-					limit ++;
-					if(limit == count) {
-						i = array.length;
-					}
-				}else {
-					filling += array[i];
-				}
-			}
-		}else {
-			int limit = 0;
-			for(i = 0;i< array.length; i++) {
-				if(array[i] != "bread") {
-					limit ++;
-					if(limit == count) {
-						i = array.length;
-					}
-				}else {
-					filling += array[i];
-				}
-			}
 		}
 		return filling;
 	}	
