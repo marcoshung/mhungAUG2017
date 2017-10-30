@@ -14,7 +14,7 @@ public class Split {
 //			it will split at the word "really" and return an array of ["I "," like "," red apples!"]
 		//play around with String.split! 
 		//What happens if you "I reallyreally likeapples".split("really") ?
-		/*System.out.println(Arrays.toString("applespineapplesbreadlettustomatobaconmayohambreadcheese".split("bread"))); 
+		System.out.println(Arrays.toString("applespineapplesbreadlettustomatobaconmayohambreadcheese".split("bread"))); 
 		System.out.println(Arrays.toString("apple bread ham bread apple bread".split(" ")));
 		System.out.println(getFilling("ham"));
 		System.out.println(getFilling("bread"));
@@ -22,7 +22,6 @@ public class Split {
 		System.out.println(getFilling("breadbread"));
 		System.out.println(getFilling("applebreadhamcheesebread"));
 		System.out.println(getFilling("ham"));
-		*/
 		System.out.println(getFillingSpaces("bread"));
 		System.out.println(getFillingSpaces("apple bread ham bread apple bread"));
 		System.out.println(getFillingSpaces("bread bread"));
