@@ -9,9 +9,9 @@ public class Split {
 		//Where sp is the string where the string splits
 		//And it returns an array
 		
-//			it will split at spaces and return an array of ["I","like","apples!"]
+		//it will split at spaces and return an array of ["I","like","apples!"]
 		// Example 2: "I really like really red apples".split("really")
-//			it will split at the word "really" and return an array of ["I "," like "," red apples!"]
+		//it will split at the word "really" and return an array of ["I "," like "," red apples!"]
 		//play around with String.split! 
 		//What happens if you "I reallyreally likeapples".split("really") ?
 		System.out.println(Arrays.toString("applespineapplesbreadlettustomatobaconmayohambreadcheese".split("bread"))); 
@@ -21,9 +21,9 @@ public class Split {
 		System.out.println(getFilling("applebreadhambreadapplebread"));
 		System.out.println(getFilling("breadbread"));
 		System.out.println(getFilling("applebreadhamcheesebread"));
-		System.out.println(getFilling("ham"));
+		System.out.println(getFilling("breadhambread"));
 		System.out.println(getFillingSpaces("bread"));
-		System.out.println(getFillingSpaces("apple bread ham bread apple bread"));
+		System.out.println(getFillingSpaces("apple bread ham bread apple bread cheese"));
 		System.out.println(getFillingSpaces("bread bread"));
 		System.out.println(getFillingSpaces("bread ham bread"));
 		System.out.println(getFillingSpaces("apple bread ham cheese bread"));
@@ -51,7 +51,6 @@ public class Split {
 		if(filling.equals("")) {
 			filling = "nothing";
 		}
-		
 		return filling;
 	}
 	//Your task Part 2:
@@ -71,7 +70,6 @@ public class Split {
 				temp = "";
 			}else if(seenBread) {
 				temp += array[i] + " ";
-				
 			}
 		}
 		if(filling.equals("")) {
