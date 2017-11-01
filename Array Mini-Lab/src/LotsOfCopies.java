@@ -16,6 +16,17 @@ public class LotsOfCopies {
 		a = newValue;
 		System.out.println(Arrays.toString(a));
 		System.out.println(Arrays.toString(b));
+		int num1 = 5;
+		int num2 = 2;
+		num2 = num1;
+		num1 = 9;
+		System.out.println(num1 + " " + num2);
+		String yes = "yes";
+		String no = "no";
+		no = yes;
+		yes = "maybe";
+		System.out.println(yes + " " + no);
+		
 		
 	}
 	public static void changeMe(int x,String str, int[] arr) {
