@@ -16,7 +16,7 @@ public class Split {
 		//What happens if you "I reallyreally likeapples".split("really") ?
 		System.out.println(Arrays.toString("applespineapplesbreadlettustomatobaconmayohambreadcheese".split("bread"))); 
 		System.out.println(Arrays.toString("apple bread ham bread apple bread".split(" ")));
-		System.out.println(getFilling("ham"));
+		System.out.println(getFilling("hamapplebread"));
 		System.out.println(getFilling("bread"));
 		System.out.println(getFilling("applebreadhambreadapplebread"));
 		System.out.println(getFilling("breadbread"));
