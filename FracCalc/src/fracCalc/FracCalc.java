@@ -57,8 +57,7 @@ public class FracCalc {
    				whole = "0";
    				numerator =num.substring(0, num.indexOf("/"));
    				denominator =num.substring(num.indexOf("/") + 1,num.length());
-   			}
-   		}
+   			} 
     	return ("whole:" + whole + " numerator:" + numerator + " denominator:" + denominator);
     }
     // TODO: Fill in the space below with any helper methods that you think you will need
