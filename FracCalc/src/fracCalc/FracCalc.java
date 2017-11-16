@@ -28,10 +28,16 @@ public class FracCalc {
     public static String produceAnswer(String equation){ 
         // TODO: Implement this function to produce the solution to the input
     	String[] fracStore = equation.split(" ");
-    	parse(fracStore[0]);
-    	return parse(fracStore[2]);	
+    	String[] storeNum1 = new String[3];
+    	String[] storeNum2 = new String[3];
+    	parse(fracStore[0], storeNum1);
+    	parse(fracStore[2], storeNum2);
+    	if(fracStore[1] == "+" || fracStore[1] == "-") {
+    		return add(storeNum1,storeNum2);
+    	}
+    	return (Arrays.toString(storeNum2));
     }
-    public static String parse(String num) {
+    public static String parse(String num, String[] array) {
     	int breakPoint = 0;
     	String whole ="";
     	String denominator = "";
@@ -57,8 +63,15 @@ public class FracCalc {
    				whole = "0";
    				numerator =num.substring(0, num.indexOf("/"));
    				denominator =num.substring(num.indexOf("/") + 1,num.length());
-   			} 
+   			}
+    	}
+    	array[0] = whole;
+    	array[1] = numerator;
+    	array[2] = denominator;
     	return ("whole:" + whole + " numerator:" + numerator + " denominator:" + denominator);
     }
-    // TODO: Fill in the space below with any helper methods that you think you will need
+    //Calculate methods
+    public static String add(String[] num1, String[] num2) {
+    	
+    }
 }
