@@ -25,19 +25,24 @@ public class FracCalc {
     //        
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    public static String produceAnswer(String equation){ 
+    @SuppressWarnings("unlikely-arg-type")
+	public static String produceAnswer(String equation){ 
         // TODO: Implement this function to produce the solution to the input
     	String[] fracStore = equation.split(" ");
-    	String[] storeNum1 = new String[3];
-    	String[] storeNum2 = new String[3];
+    	String operator = fracStore[1];
+    	int[] storeNum1 = new int[2];
+    	int[] storeNum2 = new int[2];
     	parse(fracStore[0], storeNum1);
     	parse(fracStore[2], storeNum2);
-    	if(fracStore[1] == "+" || fracStore[1] == "-") {
-    		return add(storeNum1,storeNum2);
+    	if(fracStore[1].equals("+") || fracStore[1].equals("-")) {
+    		return add(storeNum1,storeNum2,operator);
+    	}else if(fracStore[1].equals("*") || fracStore[1].equals("/")) {
+    		return multiply(storeNum1,storeNum2,operator);
+    	}else {
+    		throw new IllegalArgumentException("ERROR: Wrong format");
     	}
-    	return (Arrays.toString(storeNum2));
     }
-    public static String parse(String num, String[] array) {
+    public static String parse(String num, int[] array) {
     	int breakPoint = 0;
     	String whole ="";
     	String denominator = "";
@@ -65,13 +70,34 @@ public class FracCalc {
    				denominator =num.substring(num.indexOf("/") + 1,num.length());
    			}
     	}
-    	array[0] = whole;
-    	array[1] = numerator;
-    	array[2] = denominator;
+    	array[0] = Integer.parseInt(whole) * Integer.parseInt(denominator) + Integer.parseInt(numerator);
+    	array[1] = Integer.parseInt(denominator);
     	return ("whole:" + whole + " numerator:" + numerator + " denominator:" + denominator);
     }
     //Calculate methods
-    public static String add(String[] num1, String[] num2) {
-    	
+    public static String add(int[] num1, int[] num2,String operator) {
+    	if(operator.equals("-")) {
+    		num2[0] *= -1;
+    	}
+    	if(num1[1] != num2[1]) {
+    		int temp = num1[1];
+    		num1[1] *= num2[1];
+    		num1[0] *=num2[1];
+    		num2[0] *= temp;
+    		return(num1[0] + num2[0] + "/" + num1[1]);
+    	}else {
+    		return(num1[0] + num2[0] + "/" + num1[1]);
+    	}
+    }
+    
+    public static String multiply(int[] num1, int[] num2, String operator) {
+    	if(operator.equals("*")) {
+    		num1[0] *= num2[0];
+    		num1[1] *= num2[1];
+    	}else {
+    		num1[0] *= num2[1];
+    		num1[1] *= num2[0];
+    	}
+    	return (num1[0] + "/" + num1[1]);
     }
 }
