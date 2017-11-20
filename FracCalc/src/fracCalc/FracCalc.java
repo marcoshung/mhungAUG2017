@@ -25,16 +25,22 @@ public class FracCalc {
     //        
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    @SuppressWarnings("unlikely-arg-type")
+    //@SuppressWarnings("unlikely-arg-type")
 	public static String produceAnswer(String equation){ 
         // TODO: Implement this function to produce the solution to the input
+		//creates an array that will be used to look at the individual terms of the equation
     	String[] fracStore = equation.split(" ");
     	String operator = fracStore[1];
+    	//these arrays will be used to hold the numerator and denominator of the fractions
     	int[] storeNum1 = new int[2];
     	int[] storeNum2 = new int[2];
+    	//converts to numerator and stores the nums in the arrays to be used in the method
     	parse(fracStore[0], storeNum1);
     	parse(fracStore[2], storeNum2);
-    	if(fracStore[1].equals("+") || fracStore[1].equals("-")) {
+    	//throws exception
+    	if(storeNum1[1] == 0 ||storeNum2[1] == 0) {
+    		throw new IllegalArgumentException("ERROR: Cannot divide by 0");
+    	}else if(fracStore[1].equals("+") || fracStore[1].equals("-")) {
     		return add(storeNum1,storeNum2,operator);
     	}else if(fracStore[1].equals("*") || fracStore[1].equals("/")) {
     		return multiply(storeNum1,storeNum2,operator);
@@ -42,7 +48,8 @@ public class FracCalc {
     		throw new IllegalArgumentException("ERROR: Wrong format");
     	}
     }
-    public static String parse(String num, int[] array) {
+	//method used to get the information of the fraction and convert to improper fraction
+    public static void parse(String num, int[] array) {
     	int breakPoint = 0;
     	String whole ="";
     	String denominator = "";
@@ -58,7 +65,7 @@ public class FracCalc {
     			denominator += num.substring(i +1,num.length());
     		}
     	}
-    	//checks to see if there is an underscore, if not then if there is a backslash it is a whole num, and if there isnt a backslash it's a fraction
+    	//checks to see if there is an underscore, if not then if there isn't a backslash it is a whole num, and if there is a backslash it's a fraction
     	if(num.indexOf("_") == -1 && num.length() != 0) {
     		if(num.indexOf("/") == -1) {
     			whole = num.substring(0,num.length());
@@ -70,19 +77,24 @@ public class FracCalc {
    				denominator =num.substring(num.indexOf("/") + 1,num.length());
    			}
     	}
-    	array[0] = Integer.parseInt(whole) * Integer.parseInt(denominator) + Integer.parseInt(numerator);
+    	//checks to see if whole num is negative, if it is then the numerator will be subtracted to get more negative
+    	if(Integer.parseInt(whole) > 0 || whole.equals("0")) {
+    		array[0] = Integer.parseInt(whole) * Integer.parseInt(denominator) + Integer.parseInt(numerator);
+    	}else {
+    		array[0] = Integer.parseInt(whole) * Integer.parseInt(denominator) - Integer.parseInt(numerator);
+    	}
     	array[1] = Integer.parseInt(denominator);
-    	return ("whole:" + whole + " numerator:" + numerator + " denominator:" + denominator);
     }
     //Calculate methods
     public static String add(int[] num1, int[] num2,String operator) {
+    	//if minus sign will multiple second term by -1 and add.
     	if(operator.equals("-")) {
     		num2[0] *= -1;
     	}
     	if(num1[1] != num2[1]) {
     		int temp = num1[1];
     		num1[1] *= num2[1];
-    		num1[0] *=num2[1];
+    		num1[0] *= num2[1];
     		num2[0] *= temp;
     		return(num1[0] + num2[0] + "/" + num1[1]);
     	}else {
@@ -95,6 +107,7 @@ public class FracCalc {
     		num1[0] *= num2[0];
     		num1[1] *= num2[1];
     	}else {
+    		//multiplies by reciprical
     		num1[0] *= num2[1];
     		num1[1] *= num2[0];
     	}
