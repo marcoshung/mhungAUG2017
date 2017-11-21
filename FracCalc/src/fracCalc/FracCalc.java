@@ -41,12 +41,13 @@ public class FracCalc {
     	if(storeNum1[1] == 0 ||storeNum2[1] == 0) {
     		throw new IllegalArgumentException("ERROR: Cannot divide by 0");
     	}else if(fracStore[1].equals("+") || fracStore[1].equals("-")) {
-    		return add(storeNum1,storeNum2,operator);
+    		add(storeNum1,storeNum2,operator);
     	}else if(fracStore[1].equals("*") || fracStore[1].equals("/")) {
-    		return multiply(storeNum1,storeNum2,operator);
+    		multiply(storeNum1,storeNum2,operator);
     	}else {
     		throw new IllegalArgumentException("ERROR: Wrong format");
     	}
+    	return reduce(storeNum1[0],storeNum1[1]);
     }
 	//method used to get the information of the fraction and convert to improper fraction
     public static void parse(String num, int[] array) {
@@ -86,7 +87,7 @@ public class FracCalc {
     	array[1] = Integer.parseInt(denominator);
     }
     //Calculate methods
-    public static String add(int[] num1, int[] num2,String operator) {
+    public static void add(int[] num1, int[] num2,String operator) {
     	//if minus sign will multiple second term by -1 and add.
     	if(operator.equals("-")) {
     		num2[0] *= -1;
@@ -97,14 +98,12 @@ public class FracCalc {
     		num1[0] *= num2[1];
     		num2[0] *= temp;
     		num1[0] += num2[0];
-    		return(num1[0] + "/" + num1[1]);
     	}else {
     		num1[0] += num2[0];
-    		return(num1[0] + "/" + num1[1]);
     	}
     }
     
-    public static String multiply(int[] num1, int[] num2, String operator) {
+    public static void multiply(int[] num1, int[] num2, String operator) {
     	if(operator.equals("*")) {
     		num1[0] *= num2[0];
     		num1[1] *= num2[1];
@@ -113,7 +112,6 @@ public class FracCalc {
     		num1[0] *= num2[1];
     		num1[1] *= num2[0];
     	}
-    	return (num1[0] + "/" + num1[1]);
     }
     public static String reduce(int numerator, int denominator) {
     	int factor =0;
