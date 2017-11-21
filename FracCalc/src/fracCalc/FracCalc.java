@@ -96,9 +96,11 @@ public class FracCalc {
     		num1[1] *= num2[1];
     		num1[0] *= num2[1];
     		num2[0] *= temp;
-    		return(num1[0] + num2[0] + "/" + num1[1]);
+    		num1[0] += num2[0];
+    		return(num1[0] + "/" + num1[1]);
     	}else {
-    		return(num1[0] + num2[0] + "/" + num1[1]);
+    		num1[0] += num2[0];
+    		return(num1[0] + "/" + num1[1]);
     	}
     }
     
@@ -112,5 +114,20 @@ public class FracCalc {
     		num1[1] *= num2[0];
     	}
     	return (num1[0] + "/" + num1[1]);
+    }
+    public static String reduce(int numerator, int denominator) {
+    	int factor =0;
+    	if(numerator>=denominator) {
+    		factor = denominator;
+			while(denominator % factor !=0 || denominator % factor != 0){
+				factor--;
+			}
+		}else {
+			factor = numerator;
+			while(denominator % factor != 0 || numerator % factor != 0){
+				factor--;
+			}
+		}
+    	return numerator/factor + "/" + denominator/factor;
     }
 }
