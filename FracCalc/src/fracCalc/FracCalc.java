@@ -30,6 +30,9 @@ public class FracCalc {
         // TODO: Implement this function to produce the solution to the input
 		//creates an array that will be used to look at the individual terms of the equation
     	String[] fracStore = equation.split(" ");
+    	if(fracStore.length != 3) {
+    		throw new IllegalArgumentException("ERROR: Input is in an invalid Format.");
+    	}
     	String operator = fracStore[1];
     	//these arrays will be used to hold the numerator and denominator of the fractions
     	int[] storeNum1 = new int[2];
@@ -45,7 +48,7 @@ public class FracCalc {
     	}else if(fracStore[1].equals("*") || fracStore[1].equals("/")) {
     		multiply(storeNum1,storeNum2,operator);
     	}else {
-    		throw new IllegalArgumentException("ERROR: Wrong format");
+    		throw new IllegalArgumentException("ERROR: Input is in an invalid Format.");
     	}
     	return reduce(storeNum1[0],storeNum1[1]);
     }
@@ -114,10 +117,13 @@ public class FracCalc {
     	}
     }
     public static String reduce(int numerator, int denominator) {
-    	int factor =0;
-    	if(numerator>=denominator) {
+    	int factor = 0;
+    	int whole = 0;
+    	if(numerator == 0) {
+    		return 0 +"";
+    	}else if(numerator>=denominator) {
     		factor = denominator;
-			while(denominator % factor !=0 || denominator % factor != 0){
+			while(denominator % factor !=0 || numerator % factor != 0){
 				factor--;
 			}
 		}else {
@@ -126,6 +132,15 @@ public class FracCalc {
 				factor--;
 			}
 		}
-    	return numerator/factor + "/" + denominator/factor;
+    	denominator /= factor;
+    	numerator /= factor;
+    	whole = numerator / denominator;
+    	if(denominator == 1) {
+    		return numerator +"";
+    	}else if(whole != 0) {
+    		return whole + "_" + (numerator - denominator * whole) + "/" + denominator;
+    	}else {
+    		return numerator + "/" + denominator;
+    	}
     }
 }
