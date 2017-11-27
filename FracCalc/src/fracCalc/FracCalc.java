@@ -105,7 +105,6 @@ public class FracCalc {
     		num1[0] += num2[0];
     	}
     }
-    
     public static void multiply(int[] num1, int[] num2, String operator) {
     	if(operator.equals("*")) {
     		num1[0] *= num2[0];
@@ -116,6 +115,7 @@ public class FracCalc {
     		num1[1] *= num2[0];
     	}
     }
+    //reduces answer into simplest form
     public static String reduce(int numerator, int denominator) {
     	int factor = 0;
     	int whole = 0;
