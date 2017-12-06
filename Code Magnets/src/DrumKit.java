@@ -1,4 +1,3 @@
-
 public class DrumKit {
 	boolean topHat = true;
 	boolean playSnare = true;
