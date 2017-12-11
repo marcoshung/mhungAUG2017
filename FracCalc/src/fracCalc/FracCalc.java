@@ -51,7 +51,7 @@ public class FracCalc {
     		throw new IllegalArgumentException("ERROR: Input is in an invalid Format.");
     	}
     	return reduce(storeNum1[0],storeNum1[1]);
-    }
+	}
 	//method used to get the information of the fraction and convert to improper fraction
     public static void parse(String num, int[] array) {
     	int breakPoint = 0;
