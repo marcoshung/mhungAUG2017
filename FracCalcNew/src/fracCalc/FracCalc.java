@@ -20,8 +20,17 @@ public class FracCalc {
     	if(fracStore.length != 3) {
     		throw new IllegalArgumentException("ERROR: Input is in an invalid Format.");
     	}
+    	String operator = fracStore[1];
     	Fraction fracOne = new Fraction(fracStore[0]);
     	Fraction fracTwo = new Fraction(fracStore[2]);
-        return fracTwo.toString();
+    	String answer;
+    	if(operator.equals("+") || operator.equals("-")) {
+    		answer = Fraction.add(fracOne.getInfo(),fracTwo.getInfo(),operator);
+    	}else if(operator.equals("*") || operator.equals("/")) {
+    		answer = Fraction.multiply(fracOne.getInfo(),fracTwo.getInfo(),operator);
+    	}else {
+    		throw new IllegalArgumentException("ERROR: Input is in an invalid Format.");
+    	}
+		return(Arrays.toString(fracTwo.getInfo()));
     }
 }
