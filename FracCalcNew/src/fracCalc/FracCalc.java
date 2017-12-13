@@ -20,12 +20,8 @@ public class FracCalc {
     	if(fracStore.length != 3) {
     		throw new IllegalArgumentException("ERROR: Input is in an invalid Format.");
     	}
-    	String operator = fracStore[1];
-    	//these arrays will be used to hold the numerator and denominator of the fractions
-    	int[] storeNum1 = new int[2];
-    	int[] storeNum2 = new int[2];
     	Fraction fracOne = new Fraction(fracStore[0]);
     	Fraction fracTwo = new Fraction(fracStore[2]);
-        return "";
+        return fracTwo.toString();
     }
 }
