@@ -33,16 +33,19 @@ public class Fraction{
     				this.denominator = Integer.parseInt(num.substring(i + 1,num.length()));
     			}
     		}
-    		//checks to see if whole num is negative, if it is then the numerator will be subtracted to get more negative
-        	if(this.whole > 0 || this.whole == 0) {
-        		storeNum[0] = this.whole * this.denominator + this.numerator;
-        	}else {
-        		storeNum[0] = this.whole * this.denominator - this.numerator;
-        	}
-        	storeNum[1] = this.denominator;
     	}
+  		//checks to see if whole num is negative, if it is then the numerator will be subtracted to get more negative
+       	if(this.whole > 0) {
+       		storeNum[0] = this.whole * this.denominator + this.numerator;
+        }else if(this.whole == 0){
+       		storeNum[0] = this.numerator;
+       	}else {
+       		storeNum[0] = this.whole * this.denominator - this.numerator;
+       	}
+       	storeNum[1] = this.denominator;
+   	}
     	//checks to see if whole num is negative, if it is then the numerator will be subtracted to get more negative
-	}
+	
 	
 	public String toString() {
 		return("whole:" + this.whole + " numerator:" + this.numerator+ " denominator:" + this.denominator);
