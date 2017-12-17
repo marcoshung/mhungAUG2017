@@ -31,6 +31,6 @@ public class FracCalc {
     	}else {
     		throw new IllegalArgumentException("ERROR: Input is in an invalid Format.");
     	}
-		return(Arrays.toString(fracTwo.getInfo()));
+		return(answer);
     }
 }
