@@ -87,23 +87,40 @@ public class Fraction{
     public static String reduce(int numerator, int denominator) {
     	int factor;
     	int whole = 0;
-    	if(numerator>=denominator) {
-			factor = denominator;
+    	if(Math.abs(numerator) >= Math.abs(denominator)) {
+			factor = Math.abs(denominator);
 			while(denominator % factor !=0 || numerator % factor != 0){
 				factor--;
 			}
-		}else {
-			factor = numerator;
-			while(denominator % factor != 0 || numerator % factor != 0){
+		}else if(numerator == denominator){
+			return 1 + "";
+		}else if(numerator == 0) {
+			return 0 + "";
+    	}else if(denominator == 1) {
+    		return numerator + "";
+    	}else {
+			factor = Math.abs(numerator);
+			while(Math.abs(denominator) % factor != 0 || Math.abs(numerator) % factor != 0){
 				factor--;
 			}
 		}
     	numerator /= factor;
     	denominator /= factor;
-    	if(Math.abs(numerator) > denominator) {
-    		whole = numerator / denominator;
-    		numerator = numerator - (whole * denominator);
+    	whole = numerator / denominator;
+    	if(denominator == 1) {
+    		return numerator +"";
+    	}else if(whole != 0) {
+    		if(Math.abs((numerator - denominator * whole)) != 0) {
+    			return whole + "_" + Math.abs((numerator - denominator * whole)) + "/" + Math.abs(denominator);
+    		}else {
+    			return whole + "";
+    		}
+    	}else{
+    		if(denominator < 0 && numerator > 0) {
+    			return (numerator * -1) + "/" + Math.abs(denominator);
+    		}else {
+    			return numerator + "/" + denominator;
+    		}
     	}
-    	
     }
 }
