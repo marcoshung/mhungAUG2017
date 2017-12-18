@@ -4,7 +4,6 @@ import java.util.*;
 public class Fraction{
 	private int numerator;
 	private int denominator;
-	private int sign;
 	private int whole;
 	private int[] storeNum = new int[2];
 	//Constructor
@@ -86,12 +85,10 @@ public class Fraction{
     
     //reduces answer into simplest form
     public static String reduce(int numerator, int denominator) {
-    	int factor = 0;
+    	int factor;
     	int whole = 0;
-    	if(numerator == 0) {
-    		return 0 +"";
-    	}else if(numerator>=denominator) {
-    		factor = denominator;
+    	if(numerator>=denominator) {
+			factor = denominator;
 			while(denominator % factor !=0 || numerator % factor != 0){
 				factor--;
 			}
@@ -101,15 +98,12 @@ public class Fraction{
 				factor--;
 			}
 		}
-    	denominator /= factor;
     	numerator /= factor;
-    	whole = numerator / denominator;
-    	if(denominator == 1) {
-    		return numerator +"";
-    	}else if(whole != 0) {
-    		return whole + "_" + (numerator - denominator * whole) + "/" + denominator;
-    	}else {
-    		return numerator + "/" + denominator;
+    	denominator /= factor;
+    	if(Math.abs(numerator) > denominator) {
+    		whole = numerator / denominator;
+    		numerator = numerator - (whole * denominator);
     	}
+    	
     }
 }
