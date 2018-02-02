@@ -1,6 +1,5 @@
 
-public class Wizard extends Traveler
-{
+public class Wizard extends Traveler{
 	//Call Traveler's constructor (look it up p587) to set the name field and then 
 	//   set the color field for this class   
 	//Wizards travel 3 times as far as other travelers in their party because they scout ahead.
@@ -12,18 +11,15 @@ public class Wizard extends Traveler
 	
 	private String color;
 	
-	public Wizard(String name, String color)
-	{
-	
+	public Wizard(String name, String color) {
+		super(name);
 	}
 	
-	public void travel(int miles)
-	{
-		
+	public void travel(int miles){
+		distanceTraveled = 3*miles;
 	}
 	
-	public String getName()
-	{
+	public String getName(){
 		
 	}
 }
