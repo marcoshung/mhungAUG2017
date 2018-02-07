@@ -50,8 +50,8 @@ public class ThereAndBackAgain {
 	public static void createParty(ArrayList<Traveler> party, String[] dwarfNames){	
 		party.add(new Hobbit("Bilbo"));
 		party.add(new Wizard("Gandalf", "grey"));
-		for(int i = 0; i < dwarfNames.length; i++) {
-			party.add(new Dwarf(dwarfNames[i]));
+		for(String name : dwarfNames) {
+			party.add(new Dwarf(name));
 		}
 	}
 	// The allTravel method accepts an ArrayList of Travelers and an integer number 
