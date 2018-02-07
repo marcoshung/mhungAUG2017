@@ -16,10 +16,10 @@ public class Wizard extends Traveler{
 	}
 	
 	public void travel(int miles){
-		distanceTraveled = 3*miles;
+		super.travel(3*miles);
 	}
 	
 	public String getName(){
-		
+		return(super.getName());
 	}
 }
