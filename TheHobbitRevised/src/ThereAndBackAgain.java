@@ -66,7 +66,7 @@ public class ThereAndBackAgain {
 		String travel = "";
 		for(Traveler name : party) {
 			name.travel(miles);
-			travel += name.getName() + " has traveled " + name.getDistanceTraveled() + " miles \n";
+			travel += name.getName() + " has traveled " + name.getDistanceTraveled() + " miles\n";
 		}
 		return travel;
 	}
