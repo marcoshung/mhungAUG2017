@@ -44,7 +44,7 @@ public class ThereAndBackAgain {
 
 	
 	// The createParty method accepts an ArrayList of Travelers and a String[] of 
-	// dwarf names. This method will always add a new Hobbit named "Bilbo" and a      
+ 	// dwarf names. This method will always add a new Hobbit named "Bilbo" and a      
 	// new Wizard named "Gandalf" whose color is "Grey" to the ArrayList.
 	// Then it uses a loop to add all the dwarves from the String array to the party.
 	public static void createParty(ArrayList<Traveler> party, String[] dwarfNames){	
