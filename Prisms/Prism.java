@@ -29,16 +29,6 @@ public abstract class Prism extends ThreeDShape{
 		return height;
 	}
 	//rounds double value to 1 decimal places
-	public static double round(double operand) {
-		if(operand >0) {
-			double newOperand = operand*10 + .5;
-			int num = (int) (newOperand);
-			return ((double) (num))/10;
-		}else {
-			double newOperand = operand*10 - .5;
-			int num = (int) (newOperand);
-			return ((double) (num))/10;
-		}			
-	}
+	
 }
 	
