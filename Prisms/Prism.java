@@ -27,7 +27,7 @@ public abstract class Prism  {
 	public  double getHeight() {
 		return height;
 	}
-	//rounds double value to 2 decimal places
+	//rounds double value to 1 decimal places
 	public static double round(double operand) {
 		if(operand >0) {
 			double newOperand = operand*10 + .5;
