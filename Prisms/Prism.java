@@ -19,13 +19,25 @@ public abstract class Prism  {
 	public abstract double calcAreaOfBase();
 	public abstract double calcPerimeter();
 	public double calcVolume() {
-		return calcAreaOfBase() * height;
+		return round(calcAreaOfBase() * height);
 	} 
 	public double calcSA() {
-		return calcPerimeter() *height + (calcAreaOfBase() *2);
+		return round(calcPerimeter() *height + (calcAreaOfBase() *2));
 	}
 	public  double getHeight() {
 		return height;
+	}
+	//rounds double value to 2 decimal places
+	public static double round(double operand) {
+		if(operand >0) {
+			double newOperand = operand*10 + .5;
+			int num = (int) (newOperand);
+			return ((double) (num))/10;
+		}else {
+			double newOperand = operand*10 - .5;
+			int num = (int) (newOperand);
+			return ((double) (num))/10;
+		}			
 	}
 }
 	
