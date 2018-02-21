@@ -9,7 +9,6 @@
  * It uses half the perimeter.  (Why might you want to use 0.5 instead of 1/2?)
  */
 
-
 public class TriangularPrism extends Prism{
 	private double sideA;
 	private double sideB;
@@ -27,6 +26,6 @@ public class TriangularPrism extends Prism{
 	
 	public double calcAreaOfBase() {
 		double halfPer = (sideA + sideB + sideC) * .5;
-		return Math.sqrt(halfPer * (halfPer - sideA))
+		return Math.sqrt(halfPer * (halfPer - sideA) * (halfPer -sideB) * (halfPer - sideC));
 	}
 }
