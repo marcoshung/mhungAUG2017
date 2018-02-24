@@ -25,7 +25,7 @@ public class Runner {
 	public static String sort(String word) {
 		String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
 		String sortedWord = "";
-		for(int i = 0; i < word.length() -1;i++) {
+		for(int i = 0; i < word.length();i++) {
 			for(int j = 0; j < alphabet.length; i++) {
 				String letter = alphabet[j];
 				if(word.charAt(i) == (alphabet[j].charAt(0))) {
