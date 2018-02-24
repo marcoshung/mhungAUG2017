@@ -27,9 +27,10 @@ public class Runner {
 		String sortedWord = "";
 		for(int i = 0; i < word.length();i++) {
 			for(int j = 0; j < alphabet.length; i++) {
-				String letter = alphabet[j];
+				String letter = alphabet[i];
 				if(word.charAt(i) == (alphabet[j].charAt(0))) {
-					alphabet[j] +=letter;
+					alphabet[i] +=letter;
+					j = alphabet.length;
 				}
 			}
 		}
