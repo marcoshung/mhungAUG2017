@@ -11,7 +11,12 @@ public abstract class Scores {
 		}
 		mean /= arr.size();
 	}
-	public double calcZScore(double newScore) {
-		
+	public double calcSTDDEV() {
+		double sum = 0;
+		for(Double score : scores) {
+			sum += Math.pow(score - mean,2);
+		}
+		return Math.sqrt(sum/scores.size());
 	}
+	
 }
