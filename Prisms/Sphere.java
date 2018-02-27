@@ -5,7 +5,7 @@ public class Sphere extends ThreeDShape{
 		this.radius = radius;
 	}
 	public double calcVolume() {
-		return round((4.0/3) * Math.PI * (radius * radius * radius));
+		return round((4.0/3) * Math.PI * (Math.pow(radius, 3)));
 	}
 	public double calcSA() {
 		return round(4 * Math.PI * (radius * radius));
