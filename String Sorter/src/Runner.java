@@ -23,7 +23,6 @@ public class Runner {
 		return sorted;
 	}
 	public static String sort(String word) {
-<<<<<<< HEAD
 		String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
 		String sortedWord = "";
 		for(int i = 0; i < word.length();i++) {
@@ -34,23 +33,19 @@ public class Runner {
 					j = alphabet.length;
 				}
 			}
-=======
 		String alphabet = "abcdefghijklmnopqrstuvwxyz";
 		char[] newWord = new char[word.length()];
 		if(word.length() == 1) {
 			return word.substring(0);
 		}else if(word.length() <= 0) {
 			return "";
->>>>>>> branch 'master' of https://github.com/marcoshung/mhungAUG2017
 		}
-<<<<<<< HEAD
-		for(int i = 0; i < alphabet.length; i++) {
+		for(int i = 0; i < alphabet.length(); i++) {
 			for(int j = 1; j < alphabet[j].length(); j ++) {
 				sortedWord += alphabet[i].charAt(j);
 			}
 		}
 		return sortedWord;
-=======
 		newWord[0] = word.charAt(0);
 		for(int i = 1; i < word.length();i++) {
 			if(alphabet.indexOf(word.charAt(i)) < alphabet.indexOf(word.charAt(i-1))) {
@@ -67,6 +62,7 @@ public class Runner {
 			}
 		}
 		return(toString(newWord));
+		}
 	}
 	public static String toString(char[] array) {
 		String newWord = "";
@@ -74,6 +70,5 @@ public class Runner {
 			newWord += array[i];
 		}
 		return newWord;
->>>>>>> branch 'master' of https://github.com/marcoshung/mhungAUG2017
 	}
 }
