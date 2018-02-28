@@ -18,5 +18,7 @@ public abstract class Scores {
 		}
 		return Math.sqrt(sum/scores.size());
 	}
-	
+	public double calcZScore(double newScore) {
+		return (newScore - mean)/stddev;
+	}
 }
