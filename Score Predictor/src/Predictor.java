@@ -14,12 +14,16 @@ public class Predictor {
 			}
 		}
 	}
-	
+	public double convertString(String input) {
+		return Double.parseDouble(input);
+	}
 	public String produceAnswer(String input) {
 		String[] seperated = input.split(" ");
-		if(seperated.equals("APES")) {
-			Scores prob = new APESScore(APESScores, seperated[0]);
-		}
+
+	//	if(seperated.equals("APES")) {
+			Scores prob = new APESScore(APESScores, convertString(seperated[0]));
+		//
+		return("Prob : " + prob.getNormalProbabilityAtZ());
 	}
 	
 }

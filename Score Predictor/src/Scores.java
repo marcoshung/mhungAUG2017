@@ -21,7 +21,7 @@ public abstract class Scores {
 	public double calcZScore(double newScore) {
 		return (newScore - mean)/stddev;
 	}
-	double getNormalProbabilityAtZ() {
+	public double getNormalProbabilityAtZ() {
 	    return Math.exp(-Math.pow(ZScore, 2) / 2) / Math.sqrt(2 * Math.PI);
 	}
 }
