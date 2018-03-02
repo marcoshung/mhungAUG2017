@@ -1,9 +1,9 @@
 import java.util.*;
 public abstract class Scores {
 	double[] scores;
-	private double ZScore;
-	private double mean;
-	private double stddev;
+	private double ZScore = 0;
+	private double mean = 0;
+	private double stddev = 0;
 	public Scores(double[] arr) {
 		scores =arr;
 		for(double score : arr) {
@@ -18,8 +18,8 @@ public abstract class Scores {
 		}
 		return Math.sqrt(sum/scores.length);
 	}
-	public double calcZScore(double newScore) {
-		return (newScore - mean)/stddev;
+	public void calcZScore(double newScore) {
+		ZScore = (newScore - mean)/stddev;
 	}
 	public double getNormalProbabilityAtZ() {
 	    return Math.exp(-Math.pow(ZScore, 2) / 2) / Math.sqrt(2 * Math.PI);

@@ -1,6 +1,6 @@
 import java.util.*;
 public class Predictor {
-	double[] APESScores = {4.0/4, 4.0/4, 3.0/4, 2.0/4, 4.0/4, 2.0/4, 0.0/4, 1.0/4};
+	static double[] APESScores = {4.0/4, 4.0/4, 3.0/4, 2.0/4, 4.0/4, 2.0/4, 0.0/4, 1.0/4};
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		boolean done = false;
@@ -14,10 +14,10 @@ public class Predictor {
 			}
 		}
 	}
-	public double convertString(String input) {
+	public static double convertString(String input) {
 		return Double.parseDouble(input);
 	}
-	public String produceAnswer(String input) {
+	public static String produceAnswer(String input) {
 		String[] seperated = input.split(" ");
 
 	//	if(seperated.equals("APES")) {
