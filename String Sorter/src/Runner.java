@@ -42,7 +42,7 @@ public class Runner {
 		}
 		for(int i = 0; i < alphabet.length(); i++) {
 			for(int j = 1; j < alphabet[j].length(); j ++) {
-				sortedWord += alphabet[i].charAt(j);
+				sortedWord += String.alphabet[i].charAt(j);
 			}
 		}
 		return sortedWord;
