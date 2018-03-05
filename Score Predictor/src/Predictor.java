@@ -16,11 +16,14 @@ public class Predictor {
 	}
 	public static String produceAnswer(String input) {
 		String[] seperated = input.split(" ");
-
-	//	if(seperated.equals("APES")) {
-			Scores prob = new APESScore(APESScores, Double.parseDouble(seperated[0]));
-		//
+		Scores prob;
+		if(seperated.equals("APES")) {
+			prob = new APESScore(APESScores, Double.parseDouble(seperated[0]));
+		}else if(seperated.equals("Econ")) {
+		
+		}else {
+			throw new IllegalArgumentException("Enter in a valid class");
+		}
 		return("Prob : " + prob.getNormalProbabilityAtZ());
 	}
-	
 }
