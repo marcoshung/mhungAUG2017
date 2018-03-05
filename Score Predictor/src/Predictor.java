@@ -14,14 +14,11 @@ public class Predictor {
 			}
 		}
 	}
-	public static double convertString(String input) {
-		return Double.parseDouble(input);
-	}
 	public static String produceAnswer(String input) {
 		String[] seperated = input.split(" ");
 
 	//	if(seperated.equals("APES")) {
-			Scores prob = new APESScore(APESScores, convertString(seperated[0]));
+			Scores prob = new APESScore(APESScores, Double.parseDouble(seperated[0]));
 		//
 		return("Prob : " + prob.getNormalProbabilityAtZ());
 	}
