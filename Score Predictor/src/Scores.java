@@ -1,13 +1,12 @@
 import java.util.*;
 public abstract class Scores {
-	double[] scores;
+	private double[] scores;
+	private double[] APESScores = {4.0/4, 4.0/4, 3.0/4, 2.0/4, 4.0/4, 2.0/4, 0.0/4, 1.0/4};
 	private double ZScore = 0;
 	private double mean = 0;
 	private double stddev = 0;
-	public Scores(double[] arr) {
-		scores =arr;
-		for(double score : arr) {
-			mean += score;
+	public Scores(String name, double percent) {
+		
 		}
 		mean /= arr.length;
 	}

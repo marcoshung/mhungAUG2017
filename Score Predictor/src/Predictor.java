@@ -1,6 +1,5 @@
 import java.util.*;
 public class Predictor {
-	static double[] APESScores = {4.0/4, 4.0/4, 3.0/4, 2.0/4, 4.0/4, 2.0/4, 0.0/4, 1.0/4};
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		boolean done = false;
@@ -16,14 +15,7 @@ public class Predictor {
 	}
 	public static String produceAnswer(String input) {
 		String[] seperated = input.split(" ");
-		Scores prob;
-		if(seperated.equals("APES")) {
-			prob = new APESScore(APESScores, Double.parseDouble(seperated[0]));
-		}else if(seperated.equals("Econ")) {
-		
-		}else {
-			throw new IllegalArgumentException("Enter in a valid class");
-		}
+		Scores prob = new Score(seperated[0], Double.parseDouble(seperated[1]);
 		return("Prob : " + prob.getNormalProbabilityAtZ());
 	}
 }
