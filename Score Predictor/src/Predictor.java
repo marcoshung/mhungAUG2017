@@ -15,7 +15,7 @@ public class Predictor {
 	}
 	public static String produceAnswer(String input) {
 		String[] seperated = input.split(" ");
-		Scores prob = new Score(seperated[0], Double.parseDouble(seperated[1]);
+		Scores prob = new Scores(seperated[0], Double.parseDouble(seperated[1]));
 		return("Prob : " + prob.getNormalProbabilityAtZ());
 	}
 }
