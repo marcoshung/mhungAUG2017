@@ -34,7 +34,7 @@ import org.junit.runners.Suite;
     TestsALL.ExtraCreditEvaluationErrors.class,
     TestsALL.ExtraCreditOperationOrder.class,
     TestsALL.C_ExtraCreditHeterogeneousSorting.class,
- 
+
 })
 
 public class TestsALL

@@ -5,16 +5,17 @@ package textExcel;
 
 public class SpreadsheetLocation implements Location{
 	private String input;
-    @Override
+	private char letter = input.charAt(0);
+	private String number = input.subString(1, input.length());
     public int getRow(){
         // TODO Auto-generated method stub
-        return 20;
+        return 19;
     }
 
     @Override
     public int getCol() {
         // TODO Auto-generated method stub
-        return 12;
+        return 11;
     }
     //constructor
     public SpreadsheetLocation(String cellName)

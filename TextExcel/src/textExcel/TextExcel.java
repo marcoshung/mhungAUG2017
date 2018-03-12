@@ -19,7 +19,8 @@ public class TextExcel{
 				System.out.println("You are done");
 				done = true;
 			}else {
-				System.out.println("FINISH REST OF CODE");
+				Spreadsheet cell = new Spreadsheet();
+				cell.processCommand(input);
 			}
 		}
 	}
