@@ -5,8 +5,9 @@ package textExcel;
 
 public class Spreadsheet implements Grid{
 	//constructor
+	Cell[][] cells;
 	public Spreadsheet() {
-		Cell[][] cells = new Cell[getRows()][getCols()];
+		cells = new Cell[getRows()][getCols()];
 	}
 	@Override
 	public String processCommand(String command){
@@ -29,7 +30,7 @@ public class Spreadsheet implements Grid{
 	@Override
 	public Cell getCell(Location loc){
 		// TODO Auto-generated method stub
-		return null;
+		return cells[loc.getCol()][loc.getRow()];
 	}
 
 	@Override
