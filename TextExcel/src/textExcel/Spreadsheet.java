@@ -31,12 +31,22 @@ public class Spreadsheet implements Grid{
 	public Cell getCell(Location loc){
 		// TODO Auto-generated method stub
 		return cells[loc.getCol()][loc.getRow()];
+
 	}
 
 	@Override
-	public String getGridText(){
-		// TODO Auto-generated method stub
-		return null;
+	public String getGridText() {
+		String grid = "";
+		for(int i = 0; i < cells.length; i++) {
+			for(int j = 0; j <cells[i].length;i++) {
+				if(i == 0) {
+					grid += "|" + (char)('A' + j) + "         ";
+				}else {
+				}
+			}
+			grid += "\n";
+			}
+		return grid;
 	}
 
 }

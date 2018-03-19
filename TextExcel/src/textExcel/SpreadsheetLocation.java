@@ -21,5 +21,4 @@ public class SpreadsheetLocation implements Location{
     	letter = input.charAt(0);
     	number = input.substring(1, input.length());
     }
-
 }
