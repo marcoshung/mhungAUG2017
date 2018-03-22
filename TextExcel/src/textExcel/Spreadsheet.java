@@ -56,7 +56,9 @@ public class Spreadsheet implements Grid{
 		return grid;
 	}
 	public String cellInspect(char letter, char num) { 
-		
+		int col = letter - 'A';
+		int row = num;
+		return cells[col][row].fullCellText();
 	}
 	public String clear() {
 		for(int i = 0; i < getCols(); i++) {
