@@ -21,6 +21,8 @@ public class TextExcel{
 			}else {
 				Spreadsheet cell = new Spreadsheet();
 				cell.processCommand(input);
+				TestsALL.Helper th = new TestsALL.Helper();
+				System.out.println(th.getText());
 			}
 		}
 	}
