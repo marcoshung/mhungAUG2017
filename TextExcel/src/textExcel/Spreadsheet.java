@@ -10,12 +10,18 @@ public class Spreadsheet implements Grid{
 	@Override
 	public String processCommand(String command){
 		if(command.toUpperCase().equals("CLEAR")) {
-			clear();
+			return clear();
 		}
 		if(command.length() == 2) {
 			return cellInspect(command.charAt(0),command.charAt(1));
 		}
 		String text[] = command.split(" ");
+		if(text[0].toUpperCase().equals("CLEAR")){
+			return clearCell(returnCell(text[1]));
+		}
+		if(command.indexOf("=") != -1) {
+			assignCell(command);
+		}
 		return "";
 	}
 
@@ -60,6 +66,7 @@ public class Spreadsheet implements Grid{
 		int row = num;
 		return cells[col][row].fullCellText();
 	}
+	
 	public String clear() {
 		for(int i = 0; i < getCols(); i++) {
 			for(int j = 0; j < getRows(); i++) {
@@ -71,5 +78,13 @@ public class Spreadsheet implements Grid{
 	public String clearCell(Cell c) {
 		c = new EmptyCell();
 		return getGridText();
+	}
+	
+	public String assignCell(String assign) {
+		String[] text = assign.split(" ");
+		return getGridText();
+	}
+	public Cell returnCell(String s) {
+		return cells[s.charAt(0)][s.charAt(1)];
 	}
 }
