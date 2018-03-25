@@ -12,17 +12,15 @@ public class TextExcel{
 		boolean done = false;
 		String input;
 		Scanner console = new Scanner(System.in);
-		System.out.println("Enter Command");
 		while(!done) {
+			System.out.println("Enter Command");
 			input = console.nextLine();
 			if(input.toLowerCase().equals("quit")) {
 				System.out.println("You are done");
 				done = true;
 			}else {
 				Spreadsheet cell = new Spreadsheet();
-				cell.processCommand(input);
-				TestsALL.Helper th = new TestsALL.Helper();
-				System.out.println(th.getText());
+				System.out.println(cell.processCommand(input));
 			}
 		}
 	}

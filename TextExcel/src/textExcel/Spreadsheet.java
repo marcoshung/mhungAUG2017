@@ -6,23 +6,48 @@ public class Spreadsheet implements Grid{
 	Cell[][] cells;
 	public Spreadsheet() {
 		cells = new Cell[getRows()][getCols()];
+		for(int i = 0; i < getRows(); i++) {
+			for(int j = 0; j <getCols(); j++) {
+				cells[i][j] = new EmptyCell();
+			}
+		}
 	}
 	@Override
 	public String processCommand(String command){
+		
+		//will clear entire grid, if the command only contains clear
 		if(command.toUpperCase().equals("CLEAR")) {
 			return clear();
 		}
+		
+		//will return the cell value of if the only input has the length of two
 		if(command.length() == 2) {
-			return cellInspect(command.charAt(0),command.charAt(1));
+			SpreadsheetLocation location = new SpreadsheetLocation(command);
+			return cells[location.getRow()][location.getCol()].fullCellText();
 		}
-		String text[] = command.split(" ");
-		if(text[0].toUpperCase().equals("CLEAR")){
-			return clearCell(returnCell(text[1]));
+		
+		//this will split the command, if there is nothing else
+		String[] text = command.split(" ");
+		
+		//Not valid command
+		if(text.length <= 1) {
+			return "";
+		}else if(text[0].toUpperCase().equals("CLEAR")){
+			
+			//clears a specific cell, assuming that the cell is directly after clear
+			SpreadsheetLocation location = new SpreadsheetLocation(text[1]);
+			cells[location.getRow()][location.getCol()] = new EmptyCell();
+			return getGridText();
+			
+			//will run assignment of Cells, assuming first text is cell, and third is text.
+		}else if(command.indexOf("=") != -1) {
+			SpreadsheetLocation location = new SpreadsheetLocation(text[0]);
+			cells[location.getRow()][location.getCol()] = new TextCell(text[2]);
+			return getGridText();
+		}else {
+			return "";
 		}
-		if(command.indexOf("=") != -1) {
-			assignCell(command);
-		}
-		return "";
+		
 	}
 
 	@Override
@@ -41,10 +66,11 @@ public class Spreadsheet implements Grid{
 	}
 
 	@Override
+	//Will return entire Grid, with contents
 	public String getGridText() {
 		String grid = "  ";
 		for(int i = 0; i < cells.length; i++) {
-			for(int j = 0; j <cells[i].length;i++) {
+			for(int j = 0; j <cells[i].length;j++) {
 				if(i == 0) {
 					grid += "|" + (char)('A' + j) + "         ";
 				}else {
@@ -52,7 +78,7 @@ public class Spreadsheet implements Grid{
 						if(i < 10) {
 							grid += i + " |"+ cells[i][j].abbreviatedCellText();
 						}else {
-							grid += "|" + cells[i][j].abbreviatedCellText();
+							grid += i + "|" + cells[i][j].abbreviatedCellText();
 						}
 					}
 				}
@@ -61,30 +87,20 @@ public class Spreadsheet implements Grid{
 			}
 		return grid;
 	}
-	public String cellInspect(char letter, char num) { 
-		int col = letter - 'A';
-		int row = num;
-		return cells[col][row].fullCellText();
-	}
 	
+	//clears entire grid
 	public String clear() {
-		for(int i = 0; i < getCols(); i++) {
-			for(int j = 0; j < getRows(); i++) {
+		for(int i = 0; i < getRows(); i++) {
+			for(int j = 0; j < getCols(); j++) {
 				cells[i][j] = new EmptyCell();
 			}
 		}
 		return getGridText();
 	}
+	
+	//clears individiual cell
 	public String clearCell(Cell c) {
 		c = new EmptyCell();
 		return getGridText();
-	}
-	
-	public String assignCell(String assign) {
-		String[] text = assign.split(" ");
-		return getGridText();
-	}
-	public Cell returnCell(String s) {
-		return cells[s.charAt(0)][s.charAt(1)];
 	}
 }
