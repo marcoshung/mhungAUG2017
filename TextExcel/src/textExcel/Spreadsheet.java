@@ -42,7 +42,9 @@ public class Spreadsheet implements Grid{
 			//will run assignment of Cells, assuming first text is cell, and third is text.
 		}else if(command.indexOf("=") != -1) {
 			SpreadsheetLocation location = new SpreadsheetLocation(text[0]);
-			cells[location.getRow()][location.getCol()] = new TextCell(text[2]);
+			if(text[2].indexOf("\"") != -1) {
+				cells[location.getRow()][location.getCol()] = new TextCell(text[2]);	
+			}
 			return getGridText();
 		}else {
 			return "";

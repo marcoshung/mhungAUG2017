@@ -3,21 +3,19 @@ package textExcel;
 public class TextCell implements Cell{
 	private String text;
 	public TextCell(String text) {
-		this.text = text;
+		this.text = text.substring(1, text.length()-1);
 	}
 	public String fullCellText() {
-		return "\"" + text + "\"";
+		return ("\"" + text + "\"");
 	}
 	public String abbreviatedCellText() {
-		String text ="";
-		if(text.length() <= 10) {
-			text += text.substring(0,text.length());
-			for(int i = 0; i < 10 - text.length(); i++) {
-				text += " ";
+		if(this.text.length() <= 10) {
+			for(int i = 0; i < 10 - this.text.length(); i++) {
+				this.text += " ";
 			}
 		}else {
-			return text.substring(0,10);
+			return this.text.substring(0,10);
 		}
-		return text;
+		return this.text;
 	}
 }

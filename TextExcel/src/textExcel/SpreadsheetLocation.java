@@ -8,7 +8,7 @@ public class SpreadsheetLocation implements Location{
 	private String number;
     public int getRow(){
         // TODO Auto-generated method stub
-        return Integer.parseInt(number) - 1;
+        return Integer.parseInt(number);
     }
 
     @Override
