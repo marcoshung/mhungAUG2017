@@ -12,6 +12,7 @@ public class TextExcel{
 		boolean done = false;
 		String input;
 		Scanner console = new Scanner(System.in);
+		Spreadsheet cell = new Spreadsheet();
 		while(!done) {
 			System.out.println("Enter Command");
 			input = console.nextLine();
@@ -19,7 +20,6 @@ public class TextExcel{
 				System.out.println("You are done");
 				done = true;
 			}else {
-				Spreadsheet cell = new Spreadsheet();
 				System.out.println(cell.processCommand(input));
 			}
 		}

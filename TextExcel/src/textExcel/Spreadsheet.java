@@ -7,11 +7,12 @@ public class Spreadsheet implements Grid{
 	public Spreadsheet() {
 		cells = new Cell[getRows()][getCols()];
 		for(int i = 0; i < getRows(); i++) {
-			for(int j = 0; j <getCols(); j++) {
+			for(int j = 0; j < getCols(); j++) {
 				cells[i][j] = new EmptyCell();
 			}
 		}
 	}
+	
 	@Override
 	public String processCommand(String command){
 		
@@ -19,15 +20,16 @@ public class Spreadsheet implements Grid{
 		if(command.toUpperCase().equals("CLEAR")) {
 			return clear();
 		}
+		//this will split the command, if there is nothing else
+		String[] text = command.split(" ");
 		
-		//will return the cell value of if the only input has the length of two
-		if(command.length() == 2) {
+		//will return the cell value of if there is only one input
+		if(text.length == 1) {
 			SpreadsheetLocation location = new SpreadsheetLocation(command);
 			return cells[location.getRow()][location.getCol()].fullCellText();
 		}
 		
-		//this will split the command, if there is nothing else
-		String[] text = command.split(" ");
+		
 		
 		//Not valid command
 		if(text.length <= 1) {
@@ -54,7 +56,7 @@ public class Spreadsheet implements Grid{
 
 	@Override
 	public int getRows(){
-		return 20;
+		return 21;
 	}
 
 	@Override
@@ -72,7 +74,7 @@ public class Spreadsheet implements Grid{
 	public String getGridText() {
 		String grid = "  ";
 		for(int i = 0; i < cells.length; i++) {
-			for(int j = 0; j <cells[i].length;j++) {
+			for(int j = 0; j < cells[i].length;j++) {
 				if(i == 0) {
 					grid += "|" + (char)('A' + j) + "         ";
 				}else {
@@ -82,6 +84,8 @@ public class Spreadsheet implements Grid{
 						}else {
 							grid += i + "|" + cells[i][j].abbreviatedCellText();
 						}
+					}else {
+						grid += "|" + cells[i][j].abbreviatedCellText();
 					}
 				}
 			}
@@ -97,12 +101,6 @@ public class Spreadsheet implements Grid{
 				cells[i][j] = new EmptyCell();
 			}
 		}
-		return getGridText();
-	}
-	
-	//clears individiual cell
-	public String clearCell(Cell c) {
-		c = new EmptyCell();
 		return getGridText();
 	}
 }
