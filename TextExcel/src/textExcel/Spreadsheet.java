@@ -70,22 +70,22 @@ public class Spreadsheet implements Grid{
 	public String getGridText() {
 		String grid = "  ";
 		for(int i = 0; i < cells[i].length;i++) {
-			grid += "|" + (char)('A' + i) + "         ";
+			grid += " |" + (char)('A' + i) + "        ";
 		}
-		grid += "\n";
+		grid += " |\n";
 		for(int i = 0; i < cells.length; i++) {
 			for(int j = 0; j < cells[i].length;j++) {
 				if(j == 0){
 					if(i < 9) {
-						grid += i + 1 + " |"+ cells[i][j].abbreviatedCellText();
+						grid += i + 1 + "  |"+ cells[i][j].abbreviatedCellText();
 					}else {
-						grid += i + 1 + "|" + cells[i][j].abbreviatedCellText();
+						grid += i + 1 + " |" + cells[i][j].abbreviatedCellText();
 					}
 				}else {
 					grid += "|" + cells[i][j].abbreviatedCellText();
 				}
 			}
-			grid += "\n";
+			grid += "|\n";
 		}
 		return grid;
 		}
