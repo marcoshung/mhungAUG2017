@@ -10,11 +10,11 @@ public class TextCell implements Cell{
 	}
 	public String abbreviatedCellText() {
 		String abbreviatedText = this.text;
-		if(text.length() >= 10) {
-			return this.text.substring(0,10);
+		if(abbreviatedText.length() >= 10) {
+			return abbreviatedText.substring(0,10);
 		}
 		//if the text is less than 10 then it will add spaces to it
-		while(text.length() != 10) {
+		while(abbreviatedText.length() != 10) {
 			abbreviatedText += " ";
 		}
 		return abbreviatedText;

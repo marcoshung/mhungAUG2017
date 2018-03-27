@@ -15,7 +15,9 @@ public class Spreadsheet implements Grid{
 	
 	@Override
 	public String processCommand(String command){
-		
+		if(command.equals("")) {
+			return "";
+		}
 		//will clear entire grid, if the command only contains clear
 		if(command.toUpperCase().equals("CLEAR")) {
 			return clear();
@@ -29,19 +31,13 @@ public class Spreadsheet implements Grid{
 			return cells[location.getRow()][location.getCol()].fullCellText();
 		}
 		
-		
-		
-		//Not valid command
-		if(text.length <= 1) {
-			return "";
-		}else if(text[0].toUpperCase().equals("CLEAR")){
-			
-			//clears a specific cell, assuming that the cell is directly after clear
+		//clears a specific cell, assuming that the cell is directly after clear
+		if(text[0].toUpperCase().equals("CLEAR")){
 			SpreadsheetLocation location = new SpreadsheetLocation(text[1]);
 			cells[location.getRow()][location.getCol()] = new EmptyCell();
 			return getGridText();
 			
-			//will run assignment of Cells, assuming first text is cell, and third is text.
+		//will run assignment of Cells, assuming first text is cell, and third is text.
 		}else if(command.indexOf("=") != -1) {
 			SpreadsheetLocation location = new SpreadsheetLocation(text[0]);
 			if(text[2].indexOf("\"") != -1) {
@@ -56,7 +52,7 @@ public class Spreadsheet implements Grid{
 
 	@Override
 	public int getRows(){
-		return 21;
+		return 20;
 	}
 
 	@Override
@@ -73,26 +69,26 @@ public class Spreadsheet implements Grid{
 	//Will return entire Grid, with contents
 	public String getGridText() {
 		String grid = "  ";
+		for(int i = 0; i < cells[i].length;i++) {
+			grid += "|" + (char)('A' + i) + "         ";
+		}
+		grid += "\n";
 		for(int i = 0; i < cells.length; i++) {
 			for(int j = 0; j < cells[i].length;j++) {
-				if(i == 0) {
-					grid += "|" + (char)('A' + j) + "         ";
-				}else {
-					if(j == 0) {
-						if(i < 10) {
-							grid += i + " |"+ cells[i][j].abbreviatedCellText();
-						}else {
-							grid += i + "|" + cells[i][j].abbreviatedCellText();
-						}
+				if(j == 0){
+					if(i < 9) {
+						grid += i + 1 + " |"+ cells[i][j].abbreviatedCellText();
 					}else {
-						grid += "|" + cells[i][j].abbreviatedCellText();
+						grid += i + 1 + "|" + cells[i][j].abbreviatedCellText();
 					}
+				}else {
+					grid += "|" + cells[i][j].abbreviatedCellText();
 				}
 			}
 			grid += "\n";
-			}
+		}
 		return grid;
-	}
+		}
 	
 	//clears entire grid
 	public String clear() {
