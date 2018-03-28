@@ -23,7 +23,7 @@ public class Spreadsheet implements Grid{
 			return clear();
 		}
 		//this will split the command, if there is nothing else
-		String[] text = command.split(" ");
+		String[] text = command.split(" " , 3);
 		
 		//will return the cell value of if there is only one input
 		if(text.length == 1) {
@@ -40,8 +40,22 @@ public class Spreadsheet implements Grid{
 		//will run assignment of Cells, assuming first text is cell, and third is text.
 		}else if(command.indexOf("=") != -1) {
 			SpreadsheetLocation location = new SpreadsheetLocation(text[0]);
+			
+			//creates a text cell if the input has quotes
 			if(text[2].indexOf("\"") != -1) {
 				cells[location.getRow()][location.getCol()] = new TextCell(text[2]);	
+			}else if(text[2].indexOf("(") != -1) {
+				
+				//creates a cell if the text contains a formula
+				cells[location.getRow()][location.getCol()] = new TextCell(command);
+			}else if(text[2].indexOf("%") != -1) {
+				
+				//creates a percent cell if the text contains a % sign
+				cells[location.getRow()][location.getCol()] = new PercentCell(text[2]);
+			}else {
+				
+				//creates a value cell
+				cells[location.getRow()][location.getCol()] = new ValueCell(text[2]);
 			}
 			return getGridText();
 		}else {
@@ -62,7 +76,7 @@ public class Spreadsheet implements Grid{
 	
 	@Override
 	public Cell getCell(Location loc){
-		return cells[loc.getCol()][loc.getRow()];
+		return cells[loc.getRow()][loc.getCol()];
 	}
 
 	@Override
