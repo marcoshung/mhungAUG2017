@@ -34,7 +34,6 @@ import org.junit.runners.Suite;
     TestsALL.ExtraCreditEvaluationErrors.class,
     TestsALL.ExtraCreditOperationOrder.class,
     TestsALL.C_ExtraCreditHeterogeneousSorting.class,
-
 })
 
 public class TestsALL
@@ -550,13 +549,11 @@ public class TestsALL
     {
         // Additional tests for final project.
         Grid grid;
-
         @Before
         public void initializeGrid()
         {
             grid = new Spreadsheet();
         }
-
         private void assertListContains(Iterable<String> list, String text)
         {
             for (String line : list)
@@ -566,10 +563,8 @@ public class TestsALL
                     return;
                 }
             }
-
             assertEquals("Unable to find '" + text + "' in saved file", "0", "1");
         }
-
         @Test
         public void testSaveFormat()
         {
@@ -581,7 +576,6 @@ public class TestsALL
             grid.processCommand("D10 = \"ChocolateChocolateChipCrustedCookie\"");    // Text            
             grid.processCommand("F4 = ( 2 + 1 * 7 )");         // Formula            
             grid.processCommand("save TestSaveFormat.csv");
-
             // Open the file manually with a scanner to inspect its contents
             Scanner file;
             try
@@ -593,14 +587,12 @@ public class TestsALL
                 assertEquals("Unable to open TestSaveFormat.csv: " + e.getMessage(), "0", "1");
                 return;
             }
-
             ArrayList<String> contents = new ArrayList<String>();
             while (file.hasNextLine())
             {
                 contents.add(file.nextLine());
             }
             file.close();
-
             assertListContains(contents, "A1,PercentCell,0.23521822");
             assertListContains(contents, "B3,ValueCell,-52.5");
             assertListContains(contents, "F4,FormulaCell,( 2 + 1 * 7 )");
@@ -608,12 +600,10 @@ public class TestsALL
             assertListContains(contents, "D10,TextCell,\"ChocolateChocolateChipCrustedCookie\"");
             assertListContains(contents, "L20,ValueCell,0");
         }
-
         @Test
         public void testFileIOSimple()
         {
             Helper helper = new Helper();
-
             // Cells of each type (do formula in separate test, since can't compare
             // sheet texts with formulas until Part B)
             grid.processCommand("A1 = 1.021822%");              // Percent
@@ -627,11 +617,9 @@ public class TestsALL
             String d8 = "ChocolateChocolateChipCrustedCookie";
             grid.processCommand("D8 = " + "\"" + d8 + "\"");    // Text
             helper.setItem(7, 3, d8.substring(0, 10));
-
             // Save and clear
             grid.processCommand("save TestFileIOSimple.csv");
             grid.processCommand("clear");
-
             // Verify grid is cleared
             Cell cell = grid.getCell(new TestLocation(0, 0));
             assertEquals("cell inspection after clear", "", cell.fullCellText());
@@ -643,37 +631,29 @@ public class TestsALL
             assertEquals("cell inspection after clear", "", cell.fullCellText());
             cell = grid.getCell(new TestLocation(7, 3));
             assertEquals("cell inspection after clear", "", cell.fullCellText());
-
             // Read back in the file, verify sheet looks correct
             String gridText = grid.processCommand("open TestFileIOSimple.csv");
-
             assertEquals("grid after save and open", helper.getText(), gridText);
         }
-
         private String getConstantFormulaString(int col)
         {
             String ret = "( 0.2";
             String[] operators = {" + ", " - ", " * ", " / "};
             int operator = 0;
             String colS = "" + col;
-
             for (int row = 1; row <= 18; row++)
             {
                 ret += operators[operator] + colS + row;
                 operator = (operator + 1) % 4;
             }
-
             ret += " )";
             return ret;
         }
-
-
         @Test
         public void testFileIOComplex()
         {
             // Fills out all cells, and tests them individually.  Includes formulas,
             // so grid text cannot be used for comparisons
-
             // Fill out all but last two rows with different double values
             double value = 0.1;
             for (int col = 0; col < 12; col++)
@@ -684,13 +664,11 @@ public class TestsALL
                     value++;
                 }
             }
-
             // Next row combines the columns via FormulaCell
             for (int col = 0; col < 12; col++)
             {
                 grid.processCommand(((char) ('A' + col)) + "19 = " + getConstantFormulaString(col));
             }
-
             // Final row contains special strings (NOT formulas, but they look like them)
             String odds = "\"( 1 * 2 / 1 + 3 - 5 )\"";
             String evens = "\"B4 = ( avg A2-A3 )\"";
@@ -698,11 +676,9 @@ public class TestsALL
             {
                 grid.processCommand(((char) ('A' + col)) + "20 = " + ((col % 2 == 0) ? evens : odds));
             }
-
             // Save and clear
             grid.processCommand("save TestFileIOComplex.csv");
             grid.processCommand("clear");
-
             // Verify grid is cleared
             for (int row=0; row < 20; row++)
             {
@@ -712,12 +688,9 @@ public class TestsALL
                     assertEquals("cell inspection after clear", "", cell.fullCellText());
                 }
             }
-
             // Read back in the file
             String gridText = grid.processCommand("open TestFileIOComplex.csv");
-
             // Redo the loops, this time verifying the cells' text
-
             // Doubles in all but last two rows
             value = 0.1;
             for (int col = 0; col < 12; col++)
@@ -729,14 +702,12 @@ public class TestsALL
                     value++;
                 }
             }
-
             // Next row's formulas that combine the columns
             for (int col = 0; col < 12; col++)
             {
                 Cell cell = grid.getCell(new TestLocation(18, col));
                 assertEquals("formula cell inspection after reload", "" + getConstantFormulaString(col), cell.fullCellText());
             }
-
             // Final row contains special strings
             for (int col = 0; col < 12; col++)
             {
@@ -965,7 +936,6 @@ public class TestsALL
             grid.processCommand("D10 = \"ChocolateChocolateChipCrustedCookie\"");    // Text            
             grid.processCommand("F4 = ( 2 + A1 * 7 )");         // Formula            
             grid.processCommand("save TestSaveFormat.csv");
-
             // Open the file manually with a scanner to inspect its contents
             Scanner file;
             try
@@ -977,14 +947,12 @@ public class TestsALL
                 assertEquals("Unable to open TestSaveFormat.csv: " + e.getMessage(), "0", "1");
                 return;
             }
-
             ArrayList<String> contents = new ArrayList<String>();
             while (file.hasNextLine())
             {
                 contents.add(file.nextLine());
             }
             file.close();
-
             assertListContains(contents, "A1,PercentCell,0.23521822");
             assertListContains(contents, "B3,ValueCell,-52.5");
             assertListContains(contents, "F4,FormulaCell,( 2 + A1 * 7 )");
@@ -1065,7 +1033,6 @@ public class TestsALL
         {
             // Fills out all cells, and tests them individually.  Includes formulas,
             // so grid text cannot be used for comparisons
-
             // Fill out all but last two rows with different double values
             double value = 0.1;
             for (int col = 0; col < 12; col++)
@@ -1076,13 +1043,11 @@ public class TestsALL
                     value++;
                 }
             }
-
             // Next row combines the columns via FormulaCell
             for (int col = 0; col < 12; col++)
             {
                 grid.processCommand(((char) ('A' + col)) + "19 = " + getReferenceFormulaString(col));
             }
-
             // Final row contains special strings (NOT formulas, but they look like them)
             String odds = "\"( 1 * 2 / 1 + 3 - 5 )\"";
             String evens = "\"B4 = ( avg A2-A3 )\"";
@@ -1090,11 +1055,9 @@ public class TestsALL
             {
                 grid.processCommand(((char) ('A' + col)) + "20 = " + ((col % 2 == 0) ? evens : odds));
             }
-
             // Save and clear
             grid.processCommand("save TestFileIOComplex.csv");
             grid.processCommand("clear");
-
             // Verify grid is cleared
             for (int row=0; row < 20; row++)
             {
@@ -1104,12 +1067,9 @@ public class TestsALL
                     assertEquals("cell inspection after clear", "", cell.fullCellText());
                 }
             }
-
             // Read back in the file
             String gridText = grid.processCommand("open TestFileIOComplex.csv");
-
             // Redo the loops, this time verifying the cells' text
-
             // Doubles in all but last two rows
             value = 0.1;
             for (int col = 0; col < 12; col++)
@@ -1121,14 +1081,12 @@ public class TestsALL
                     value++;
                 }
             }
-
             // Next row's formulas that combine the columns
             for (int col = 0; col < 12; col++)
             {
                 Cell cell = grid.getCell(new TestLocation(18, col));
                 assertEquals("formula cell inspection after reload", "" + getReferenceFormulaString(col), cell.fullCellText());
             }
-
             // Final row contains special strings
             for (int col = 0; col < 12; col++)
             {
