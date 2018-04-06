@@ -1,3 +1,4 @@
+//Marcos Hung; per 2
 package textExcel;
 public class RealCell implements Cell{
 	private double value;
@@ -9,6 +10,7 @@ public class RealCell implements Cell{
 		}else if(value.indexOf("(") != -1 && value.indexOf(")") != -1){
 			this.formula = value;
 		}else {
+			
 			this.value = Double.parseDouble(value);
 		}
 	}
