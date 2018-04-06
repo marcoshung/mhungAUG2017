@@ -47,7 +47,7 @@ public class Spreadsheet implements Grid{
 			}else if(text[2].indexOf("(") != -1) {
 				
 				//creates a cell if the text contains a formula
-				cells[location.getRow()][location.getCol()] = new TextCell(command);
+				cells[location.getRow()][location.getCol()] = new FormulaCell(text[2]);
 			}else if(text[2].indexOf("%") != -1) {
 				
 				//creates a percent cell if the text contains a % sign
@@ -60,8 +60,7 @@ public class Spreadsheet implements Grid{
 			return getGridText();
 		}else {
 			return "";
-		}
-		
+		}	
 	}
 
 	@Override

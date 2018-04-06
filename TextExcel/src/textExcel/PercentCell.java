@@ -3,10 +3,12 @@ package textExcel;
 public class PercentCell extends RealCell{
 	private double percent;
 	public PercentCell(String value) {
-		Double num = Double.parseDouble(value.substring(0, value.length() -1 ));
-		percent = num / 100.0;
+		super(value);
+		//turns the returned value into a percent decimal
+		percent = super.getValue() / 100.0;
 	}
 	public String abbreviatedCellText() {
+		//converts the percent into an int to truncate other numbers
 		int text = (int) (percent * 100);
 		String abbreviatedText = text + "%";
 		if(abbreviatedText.length() >= 10) {
@@ -19,6 +21,6 @@ public class PercentCell extends RealCell{
 		return abbreviatedText;
 	}
 	public String fullCellText() {
-		return percent +"";
+		return percent + "";
 	}
 }
