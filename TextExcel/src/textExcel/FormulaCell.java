@@ -1,4 +1,4 @@
-//Marcos Hung; Per 2
+//Marcos 8Hung; Per 2
 package textExcel;
 import java.util.*;
 
@@ -32,41 +32,41 @@ public class FormulaCell extends RealCell{
 		
 		//formula will only equal the numbers of the formula, not the parenthesises.
 		String formula = this.formula.substring(2, this.formula.length() - 2);
-		ArrayList<String> parsed = new ArrayList<>(Arrays.asList(formula.split(" ")));
+		String[] parsed = formula.split(" ");
 		
-		if(parsed.get(0).toLowerCase().equals("sum") || parsed.get(0).toLowerCase().equals("avg")) {
-			
+		if(parsed[0].toLowerCase().equals("sum") || parsed[0].toLowerCase().equals("avg")) {
+			parsed[1].split("-");
 		}
 		//total will start off being the first number and be later added to it.
 		
 		double total;
-		if(parsed.get(0).charAt(0) >= 'a') {
-			SpreadsheetLocation firstLocation = new SpreadsheetLocation(parsed.get(0));
+		if(parsed[0].charAt(0) >= 'a') {
+			SpreadsheetLocation firstLocation = new SpreadsheetLocation(parsed[0]);
 			if(spreadsheet[firstLocation.getRow()][firstLocation.getCol()].fullCellText().equals("")){
 				total = 0;
 			}else {
 					total = Double.parseDouble(spreadsheet[firstLocation.getRow()][firstLocation.getCol()].fullCellText());
 			}
 		}else {
-			total= Double.parseDouble(parsed.get(0));
+			total= Double.parseDouble(parsed[0]);
 		}
 			
-		for(int i = 1; i < parsed.size(); i++) {
+		for(int i = 1; i < parsed.length; i++) {
 			
 			//num will be the next number
 			double num;
-			if(parsed.get(i + 1).charAt(0) >= 'a') {
-				SpreadsheetLocation location = new SpreadsheetLocation(parsed.get(i + 1));
+			if(parsed[i + 1].charAt(0) >= 'a') {
+				SpreadsheetLocation location = new SpreadsheetLocation(parsed[i + 1]);
 				if(spreadsheet[location.getRow()][location.getCol()].fullCellText().equals("")) {
 					num = 0;
 				}else {
 					num = Double.parseDouble(spreadsheet[location.getRow()][location.getCol()].fullCellText());
 				}
 			}else {
-				num= Double.parseDouble(parsed.get(i + 1));
+				num= Double.parseDouble(parsed[i + 1]);
 			}
 			
-			String operator = parsed.get(i);
+			String operator = parsed[i];
 			if(operator.equals("+")){
 				total += num;
 			}else if(operator.equals("-")) {
