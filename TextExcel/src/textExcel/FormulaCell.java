@@ -33,13 +33,20 @@ public class FormulaCell extends RealCell{
 		//formula will only equal the numbers of the formula, not the parenthesises.
 		String formula = this.formula.substring(2, this.formula.length() - 2);
 		String[] parsed = formula.split(" ");
-		
-		if(parsed[0].toLowerCase().equals("sum") || parsed[0].toLowerCase().equals("avg")) {
-			parsed[1].split("-");
-		}
 		//total will start off being the first number and be later added to it.
-		
 		double total;
+		//deals with sum and average
+		if(parsed[0].toLowerCase().equals("sum") || parsed[0].toLowerCase().equals("avg")) {
+			String[] cells = parsed[1].split("-");
+			for(int i = cells[0].charAt(0); i < cells[1].charAt(0); i++) {
+				for(int j = Integer.parseInt(cells[0].substring(1, cells[0].length())); 
+						j < Integer.parseInt(cells[0].substring(1, cells[1].length())); i++) {
+					
+				}
+			}
+		}
+		
+		//deals with if the first number is a cell. turns it into a number
 		if(parsed[0].charAt(0) >= 'a') {
 			SpreadsheetLocation firstLocation = new SpreadsheetLocation(parsed[0]);
 			if(spreadsheet[firstLocation.getRow()][firstLocation.getCol()].fullCellText().equals("")){
@@ -52,9 +59,9 @@ public class FormulaCell extends RealCell{
 		}
 			
 		for(int i = 1; i < parsed.length; i++) {
-			
 			//num will be the next number
 			double num;
+			//deals with if there is a cell.
 			if(parsed[i + 1].charAt(0) >= 'a') {
 				SpreadsheetLocation location = new SpreadsheetLocation(parsed[i + 1]);
 				if(spreadsheet[location.getRow()][location.getCol()].fullCellText().equals("")) {
