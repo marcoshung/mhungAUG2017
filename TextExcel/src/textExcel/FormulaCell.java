@@ -41,7 +41,8 @@ public class FormulaCell extends RealCell{
 			for(int i = cells[0].charAt(0); i < cells[1].charAt(0); i++) {
 				for(int j = Integer.parseInt(cells[0].substring(1, cells[0].length())); 
 						j < Integer.parseInt(cells[0].substring(1, cells[1].length())); i++) {
-					
+					String cell = i + j;
+					SpreadsheetLocation firstLocation = new SpreadsheetLocation(spreadsheet[cells[i][j]]);
 				}
 			}
 		}
