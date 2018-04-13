@@ -51,7 +51,7 @@ public class FormulaCell extends RealCell{
 			total= Double.parseDouble(parsed[0]);
 		}
 			
-		for(int i = 1; i < parsed.length; i+=2) {
+		for(int i = 1; i < parsed.length; i++) {
 			
 			//num will be the next number
 			double num;
@@ -80,7 +80,7 @@ public class FormulaCell extends RealCell{
 			}
 			
 			//skips the number that it already handled.
-			//i++;
+			i++;
 		}
 		return total;
 	}
