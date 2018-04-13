@@ -5,6 +5,11 @@ public class Pikachu {
 		System.out.println("           (\\__/)       ");
 		System.out.println("           (o^.^)         ");
 		System.out.println("        z(_(\")(\")    ");
-		
+		char letter = 'A';
+		if(letter >= 'a') {
+			System.out.println("yes");
+		}else {
+			System.out.println("No");
+		}
 		}
 }

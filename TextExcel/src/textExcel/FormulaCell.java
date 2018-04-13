@@ -34,21 +34,29 @@ public class FormulaCell extends RealCell{
 		String formula = this.formula.substring(2, this.formula.length() - 2);
 		String[] parsed = formula.split(" ");
 		//total will start off being the first number and be later added to it.
-		double total;
+		double total = 0.0;
 		//deals with sum and average
 		if(parsed[0].toLowerCase().equals("sum") || parsed[0].toLowerCase().equals("avg")) {
 			String[] cells = parsed[1].split("-");
+			int counter = 0;
 			for(int i = cells[0].charAt(0); i < cells[1].charAt(0); i++) {
 				for(int j = Integer.parseInt(cells[0].substring(1, cells[0].length())); 
 						j < Integer.parseInt(cells[0].substring(1, cells[1].length())); i++) {
-					String cell = i + j;
+					String cell = i + "" + j;
 					SpreadsheetLocation firstLocation = new SpreadsheetLocation(cell);
+					total += Double.parseDouble(spreadsheet[firstLocation.getRow()][firstLocation.getCol()].fullCellText());
+					counter++;
 				}
+			}
+			if(parsed[0].toLowerCase().equals("avg")) {
+				return total/counter;
+			}else {
+				return total;
 			}
 		}
 		
 		//deals with if the first number is a cell. turns it into a number
-		if(parsed[0].charAt(0) >= 'a') {
+		if(parsed[0].charAt(0) >= 'A') {
 			SpreadsheetLocation firstLocation = new SpreadsheetLocation(parsed[0]);
 			if(spreadsheet[firstLocation.getRow()][firstLocation.getCol()].fullCellText().equals("")){
 				total = 0;
@@ -63,7 +71,7 @@ public class FormulaCell extends RealCell{
 			//num will be the next number
 			double num;
 			//deals with if there is a cell.
-			if(parsed[i + 1].charAt(0) >= 'a') {
+			if(parsed[i + 1].charAt(0) >= 'A') {
 				SpreadsheetLocation location = new SpreadsheetLocation(parsed[i + 1]);
 				if(spreadsheet[location.getRow()][location.getCol()].fullCellText().equals("")) {
 					num = 0;
