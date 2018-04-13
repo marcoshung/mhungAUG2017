@@ -4,6 +4,7 @@ import java.util.*;
 
 public class FormulaCell extends RealCell{
 	private String formula;
+	public int test;
 	private Cell[][] spreadsheet;
 	public FormulaCell(String value, Cell[][] spreadsheet) {
 		super(value);
