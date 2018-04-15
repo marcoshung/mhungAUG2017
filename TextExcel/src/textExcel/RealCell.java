@@ -34,7 +34,7 @@ public class RealCell implements Cell{
 		}
 		return value + "";
 	}
-	public double getValue() {
+	public double getDoubleValue() {
 		return this.value;
 	}
 	public String getFormula() {

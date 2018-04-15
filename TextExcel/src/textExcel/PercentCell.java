@@ -6,7 +6,7 @@ public class PercentCell extends RealCell{
 	public PercentCell(String value) {
 		super(value);
 		//turns the returned value into a percent decimal
-		percent = super.getValue() / 100.0;
+		percent = super.getDoubleValue() / 100.0;
 	}
 	public String abbreviatedCellText() {
 		//converts the percent into an int to truncate other numbers

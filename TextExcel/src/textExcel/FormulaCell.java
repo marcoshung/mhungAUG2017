@@ -1,4 +1,4 @@
-//Marcos 8Hung; Per 2
+//Marcos Hung; Per 2
 package textExcel;
 import java.util.*;
 
@@ -39,12 +39,11 @@ public class FormulaCell extends RealCell{
 		if(parsed[0].toLowerCase().equals("sum") || parsed[0].toLowerCase().equals("avg")) {
 			String[] cells = parsed[1].split("-");
 			int counter = 0;
-			for(int i = cells[0].charAt(0); i < cells[1].charAt(0); i++) {
-				for(int j = Integer.parseInt(cells[0].substring(1, cells[0].length())); 
-						j < Integer.parseInt(cells[0].substring(1, cells[1].length())); i++) {
-					String cell = i + "" + j;
+			for(int i = cells[0].toLowerCase().charAt(0); i <= cells[1].toLowerCase().charAt(0); i++) {
+				for(int j = Integer.parseInt(cells[0].substring(1)); j <= Integer.parseInt(cells[1].substring(1)); j++) {
+					String cell = (char) (i) + "" + j;
 					SpreadsheetLocation firstLocation = new SpreadsheetLocation(cell);
-					total += Double.parseDouble(spreadsheet[firstLocation.getRow()][firstLocation.getCol()].fullCellText());
+					total += Double.parseDouble(spreadsheet[firstLocation.getRow()][firstLocation.getCol()].abbreviatedCellText().trim());
 					counter++;
 				}
 			}
@@ -61,7 +60,7 @@ public class FormulaCell extends RealCell{
 			if(spreadsheet[firstLocation.getRow()][firstLocation.getCol()].fullCellText().equals("")){
 				total = 0;
 			}else {
-					total = Double.parseDouble(spreadsheet[firstLocation.getRow()][firstLocation.getCol()].fullCellText());
+					total = Double.parseDouble(spreadsheet[firstLocation.getRow()][firstLocation.getCol()].abbreviatedCellText().trim());
 			}
 		}else {
 			total= Double.parseDouble(parsed[0]);
@@ -73,7 +72,10 @@ public class FormulaCell extends RealCell{
 			//deals with if there is a cell.
 			if(parsed[i + 1].charAt(0) >= 'A') {
 				SpreadsheetLocation location = new SpreadsheetLocation(parsed[i + 1]);
-				if(spreadsheet[location.getRow()][location.getCol()].fullCellText().equals("")) {
+				if(spreadsheet[location.getRow()][location.getCol()] instanceof FormulaCell) {
+					num = Double.parseDouble(spreadsheet[location.getRow()][location.getCol()].abbreviatedCellText().trim());
+				}
+				else if(spreadsheet[location.getRow()][location.getCol()].fullCellText().equals("")) {
 					num = 0;
 				}else {
 					num = Double.parseDouble(spreadsheet[location.getRow()][location.getCol()].fullCellText());
