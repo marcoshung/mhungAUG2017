@@ -19,7 +19,7 @@ public class Spreadsheet implements Grid{
 			return "";
 		}
 		//will clear entire grid, if the command only contains clear
-		if(command.toUpperCase().equals("CLEAR")) {
+		if(command.toLowerCase().equals("clear")) {
 			return clear();
 		}
 		//this will split the command, if there is nothing else
@@ -28,11 +28,11 @@ public class Spreadsheet implements Grid{
 		//will return the cell value of if there is only one input
 		if(text.length == 1) {
 			SpreadsheetLocation location = new SpreadsheetLocation(command);
-			return cells[location.getRow()][location.getCol()].fullCellText();
+			return getCell(location).fullCellText();
 		}
 		
 		//clears a specific cell, assuming that the cell is directly after clear
-		if(text[0].toUpperCase().equals("CLEAR")){
+		if(text[0].toLowerCase().equals("clear")){
 			SpreadsheetLocation location = new SpreadsheetLocation(text[1]);
 			cells[location.getRow()][location.getCol()] = new EmptyCell();
 			return getGridText();
@@ -45,7 +45,6 @@ public class Spreadsheet implements Grid{
 			if(text[2].indexOf("\"") != -1) {
 				cells[location.getRow()][location.getCol()] = new TextCell(text[2]);	
 			}else if(text[2].indexOf("(") != -1) {
-				
 				//creates a cell if the text contains a formula
 				cells[location.getRow()][location.getCol()] = new FormulaCell(text[2], cells);
 			}else if(text[2].indexOf("%") != -1) {
