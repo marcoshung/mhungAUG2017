@@ -6,11 +6,7 @@ public class Spreadsheet implements Grid{
 	Cell[][] cells;
 	public Spreadsheet() {
 		cells = new Cell[getRows()][getCols()];
-		for(int i = 0; i < getRows(); i++) {
-			for(int j = 0; j < getCols(); j++) {
-				cells[i][j] = new EmptyCell();
-			}
-		}
+		clear();
 	}
 	
 	@Override
@@ -20,7 +16,8 @@ public class Spreadsheet implements Grid{
 		}
 		//will clear entire grid, if the command only contains clear
 		if(command.toLowerCase().equals("clear")) {
-			return clear();
+			clear();
+			return getGridText();
 		}
 		//this will split the command, if there is nothing else
 		String[] text = command.split(" " , 3);
@@ -103,12 +100,11 @@ public class Spreadsheet implements Grid{
 		}
 	
 	//clears entire grid
-	public String clear() {
+	public void clear() {
 		for(int i = 0; i < getRows(); i++) {
 			for(int j = 0; j < getCols(); j++) {
 				cells[i][j] = new EmptyCell();
 			}
 		}
-		return getGridText();
 	}
 }
