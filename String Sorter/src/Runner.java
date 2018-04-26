@@ -21,20 +21,9 @@ public class Runner {
 		}
 		return sort(array);
 	}
-	public static String sort(ArrayList<Character> unsortedWord) {
-		ArrayList <Character> sortedWord = new ArrayList<Character>();
-		int sortLimit = unsortedWord.size();
-		ArrayList<Character> sorted = new ArrayList<Character>();
-		for(int i = 0; i < unsortedWord.size(); i++) {
-			char temp = unsortedWord.get(i);
-			for(int j = i + 1; j < unsortedWord.size(); j++) {
-				if(unsortedWord.get(j) < temp) {
-					temp = unsortedWord.get(j);
-				}
-			}
-			sortedWord.add(temp);
-		}
-		return(toString(sortedWord));
+	public static String sort(ArrayList<Character> unsorted) {
+		
+		return(toString(sorted));
 	}
 	public static String toString(ArrayList<Character> array) {
 		String sorted = "";
