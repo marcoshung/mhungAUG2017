@@ -22,7 +22,20 @@ public class Runner {
 		return sort(array);
 	}
 	public static String sort(ArrayList<Character> unsorted) {
-		
+		ArrayList<Character> sorted = new ArrayList<Character>();
+		for(int i = 0; i < unsorted.size(); i++) {
+			char lowest = unsorted.get(i);
+			for(int j = i + 1; j < unsorted.size(); j++) {
+				if(unsorted.get(j) < lowest) {
+					char temp = unsorted.get(i);
+					lowest = unsorted.get(j);
+					unsorted.set(i, unsorted.get(j));
+					unsorted.set(j, temp);
+					
+				}
+			}
+			sorted.add(lowest);
+		}
 		return(toString(sorted));
 	}
 	public static String toString(ArrayList<Character> array) {
