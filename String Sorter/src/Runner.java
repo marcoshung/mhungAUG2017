@@ -1,5 +1,5 @@
+
 import java.util.*;
-import java.util.Arrays;
 public class Runner {
 	public static void main(String[] args) {
 		Scanner console = new Scanner(System.in);
@@ -15,11 +15,17 @@ public class Runner {
 		}
 	}
 	public static String produceAnswer(String word) {
-		ArrayList<Character> array = new ArrayList<>();
-		for(int i = 0; i < word.length(); i++) {
-			array.add(word.charAt(i));
+		String sorted = "";
+		ArrayList<String> words = new ArrayList<String> (Arrays.asList(word.split(" ")));
+		for(int n = 0; n < words.size(); n ++) {
+			ArrayList<Character> array = new ArrayList<Character>();
+			for(int i = 0; i < words.get(n).length(); i++) {
+				array.add(words.get(n).charAt(i));
+			}
+			sorted += sort(array) + " ";
 		}
-		return sort(array);
+		
+		return sorted;
 	}
 	public static String sort(ArrayList<Character> unsorted) {
 		ArrayList<Character> sorted = new ArrayList<Character>();
