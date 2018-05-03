@@ -1,4 +1,3 @@
-
 import java.util.*;
 public class Runner {
 	public static void main(String[] args) {
@@ -22,7 +21,7 @@ public class Runner {
 			for(int i = 0; i < words.get(n).length(); i++) {
 				array.add(words.get(n).charAt(i));
 			}
-			sorted += sort(array) + " ";
+			sorted += "word "+ (n+1) + " : " + sort(array) + "  \n";
 		}
 		
 		return sorted;
@@ -37,7 +36,6 @@ public class Runner {
 					lowest = unsorted.get(j);
 					unsorted.set(i, unsorted.get(j));
 					unsorted.set(j, temp);
-					
 				}
 			}
 			sorted.add(lowest);
@@ -46,9 +44,18 @@ public class Runner {
 	}
 	public static String toString(ArrayList<Character> array) {
 		String sorted = "";
-		for(int i = 0; i < array.size(); i ++) {
+		String counted = "\n";
+		char character = array.get(0);
+		int count = 0;
+		for(int i = 0; i < array.size(); i++) {
 			sorted += array.get(i);
+			if(character == array.get(i)) {
+				count ++;
+			}else {
+				counted +=  count + " " + character + "'s ";
+				character = array.get(i);
+			}
 		}
-		return sorted;
+		return (sorted + counted);
 	}
 }

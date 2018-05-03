@@ -7,7 +7,10 @@ public class StatsRunner {
 		boolean done = false;
 		while(!done) {
 			String input = console.nextLine();
-			System.out.println(console.nextLine());
+			System.out.println(produceAnswer(console.nextLine()));
 		}
+	}
+	public String produceAnswer(String input) {
+		
 	}
 }
