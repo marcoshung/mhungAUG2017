@@ -52,7 +52,7 @@ public class Runner {
 			if(character == array.get(i)) {
 				count ++;
 			}else {
-				counted +=  count + " " + character + "'s ";
+				counted +=  count + " " + character + "'s;";
 				character = array.get(i);
 			}
 		}
