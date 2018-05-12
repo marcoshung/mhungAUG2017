@@ -11,11 +11,12 @@ public class Client {
 		boolean done = true;
 		if(console.nextLine().toLowerCase().equals("play")) {
 			done = false;
-			System.out.println("Would you like to play HARD mode?");
+			System.out.println("Would you like to play RANDOM mode or NORMAL mode?");
 			response = console.nextLine();
 		}
 		HiddenWord word = new HiddenWord(response);
 		while(!done) {
+			System.out.println("Enter a guess");
 			String newWord = console.nextLine();
 			if(newWord.toLowerCase().equals("quit")) {
 				done = true;
@@ -27,5 +28,6 @@ public class Client {
 				}
 			}
 		}
+		System.out.println("See you next time!");
 	}
 }

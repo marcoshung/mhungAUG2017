@@ -248,10 +248,12 @@ public class HiddenWord {
 ,"shape"
 ,"carefully","scientists"};
 	public HiddenWord(String response) {
-		if(!(response.equals("yes"))) {
+		if(!(response.equals("random"))) {
 			this.word = wordList[(int) (Math.random() * wordList.length)];
 		}else {
-			
+			for(int i = 0; i < wordList[(int) (Math.random()*wordList.length)].length(); i++) {
+				this.word += (char) ( 97 + ((int) (Math.random() * 27)));
+			}
 		}
 		
 	}
@@ -292,7 +294,7 @@ public class HiddenWord {
 				hint += "You had " + correctCount +" letters in the wrong space!\n";
 			}
 			if(wrongCount > 0) {
-				hint += "You had " + wrongCount + " letters that are in the word :(\n";
+				hint += "You had " + wrongCount + " letters that are not in the word :(\n";
 			}
 			if(missingCount > 0) {
 				hint += "Your guess was " + missingCount + " letters too short\n";
