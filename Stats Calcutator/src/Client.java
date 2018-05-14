@@ -15,15 +15,17 @@ public class Client {
 			response = console.nextLine();
 		}
 		HiddenWord word = new HiddenWord(response);
+		int guesses = 0;
 		while(!done) {
 			System.out.println("Enter a guess");
 			String newWord = console.nextLine();
+			guesses++;
 			if(newWord.toLowerCase().equals("quit")) {
 				done = true;
 			}else {
 				System.out.println(word.getHint(newWord.toLowerCase()));
 				if(newWord.equals(word.getWord())) {
-					System.out.println("YOU GUESSED THE WORD");
+					System.out.println("YOU GUESSED THE WORD\nIt took you " + guesses + " guesses!");
 					done = true;
 				}
 			}
