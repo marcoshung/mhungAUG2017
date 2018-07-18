@@ -27,6 +27,7 @@ public class DoMath {
 		System.out.println(Calculate.gcf(54,60));
 		System.out.println(Calculate.sqrt(169));
 		System.out.println(Calculate.quadForm(1,-8,16));
+		System.out.println(Calculate.interestCalc(100, 5, 5));
 	}
 
 }
