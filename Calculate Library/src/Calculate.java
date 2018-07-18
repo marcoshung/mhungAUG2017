@@ -223,4 +223,13 @@ public class Calculate {
 			}
 		}
 	}
+	
+	//calculate final amount and interest amount assuming rate is a percentage
+	public static String interestCalc(double originalAmount, double rate, double time) {
+		double total = originalAmount * (1 + rate/100 * time);
+		double interest = total - originalAmount;
+		
+		return "The interest amount is " + interest + " which leads to a total amount of " + total;
+				
+	}
 }

@@ -10,6 +10,8 @@ public class List {
 	private ArrayList<DataPoint> testDataPoints ;
 	private ArrayList<Double> testyList = new ArrayList<Double>();
 	private ArrayList<Double> testxList = new ArrayList<Double>();
+	private double a;
+	private double b;
 	
 	public List() {
 		 DataPoints = new ArrayList<DataPoint>();
@@ -23,6 +25,7 @@ public class List {
 	}
 	
 	public String calculate() {	
+		
 		return round2(getA()) +"x + " + round2(getB());
 	}
 	public static double calcSum(ArrayList<Double> point) {
@@ -55,12 +58,16 @@ public class List {
 	}
 	
 	public double getA() {
-		return (((counter*(calcSum(xList,yList))) - (calcSum(xList)*(calcSum(yList))))) / ((counter*(calcSum(xList,xList))) - (Math.pow(calcSum(xList), 2)));
+		double numerator = (calcSum(yList)*calcSum(xList,xList)) - (calcSum(xList)*(calcSum(xList,yList)));
+		double denominator = (counter*(calcSum(xList,xList))) - (Math.pow(calcSum(xList), 2));
+		return numerator / denominator;
 		
 	}
 	
 	public double getB() {
-		return (((counter*(calcSum(xList,yList))) - (calcSum(xList)*(calcSum(yList))))) / ((counter*(calcSum(xList,xList))) - (Math.pow(calcSum(xList), 2)));
+		double numerator = (((counter*(calcSum(xList,yList))) - (calcSum(xList)*(calcSum(yList)))));
+		double denominator = (counter*(calcSum(xList,xList))) - (Math.pow(calcSum(xList), 2));
+		return numerator / denominator;
 	}
 	
 	public ArrayList<DataPoint> getDataPoints(){
@@ -71,6 +78,14 @@ public class List {
 		DataPoints.remove(DataPoints.size() - 1);
 	}
 	public void useTestData() {
+		int[][] testPoints = new int[][] {{43,21,25,42,57,59},{99,65,79,75,87,81}};
 		
+		for(int i = 0; i <testPoints[0].length; i ++) {
+			DataPoint newPoint = new DataPoint(testPoints[0][i], testPoints[1][i]);
+			DataPoints.add(newPoint);
+			xList.add(newPoint.getX());
+			yList.add(newPoint.getY());
+			counter++;
+		}
 	}
 }
