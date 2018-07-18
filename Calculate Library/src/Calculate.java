@@ -3,12 +3,12 @@
  * Our self written math library. It contains a series of methods to do basic math problems.
 */
 public class Calculate {
-	//Will square an integer
-	public static int square(int operand) {
+	//Will square an number
+	public static double square(double operand) {
 		return operand*operand;
 	}
-	//Will cube an integer
-	public static int cube(int operand) {
+	//Will cube an number
+	public static double cube(double operand) {
 		return operand*operand*operand;
 	}
 	//Will give an average of two double numbers
