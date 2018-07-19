@@ -5,6 +5,10 @@ import javax.swing.JLabel;
 import javax.swing.JFrame;
 public class Console {
 		static List DataPoints = new List();
+		static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		static int height = screenSize.height;
+		static int width = screenSize.width;
+		
 	public static void main(String[] args) {
 		Scanner console = new Scanner(System.in);
 		System.out.println("This program will calulate the linear regression line given data points\nPlease enter data points and enter DONE to finish");
@@ -25,8 +29,10 @@ public class Console {
 		}
 		System.out.println(DataPoints.calculate());
 		
+		
+
 		JFrame window = new JFrame();
-		window.setSize(500,500);
+		window.setSize(width,height);
 		window.setTitle("NEW JFRAME");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
@@ -48,5 +54,12 @@ public class Console {
 	
 	public static List getList() {
 		return DataPoints;
+	}
+	
+	public static int getHeight() {
+		return height;
+	}
+	public static int getWidth() {
+		return width;
 	}
 }

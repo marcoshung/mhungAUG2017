@@ -25,6 +25,15 @@ public class List {
 	}
 	
 	public String calculate() {	
+		if(getA() == 0.0 && getB() == 0.0) {
+			return "NO EQUATION";
+		}else if(getA() == 1.0 && getB() != 0.0) {
+			return "x + " + round2(getB());
+		}else if(getA() == 1.0 && getB() == 0.0) {
+			return "x";
+		}else if(getA() == 0.0 && getB() != 0.0) {
+			return round2(getB()) +"";
+		}
 		
 		return round2(getA()) +"x + " + round2(getB());
 	}
