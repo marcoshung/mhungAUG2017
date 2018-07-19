@@ -57,14 +57,14 @@ public class List {
 		
 	}
 	
-	public double getA() {
+	public double getB() {
 		double numerator = (calcSum(yList)*calcSum(xList,xList)) - (calcSum(xList)*(calcSum(xList,yList)));
 		double denominator = (counter*(calcSum(xList,xList))) - (Math.pow(calcSum(xList), 2));
 		return numerator / denominator;
 		
 	}
 	
-	public double getB() {
+	public double getA() {
 		double numerator = (((counter*(calcSum(xList,yList))) - (calcSum(xList)*(calcSum(yList)))));
 		double denominator = (counter*(calcSum(xList,xList))) - (Math.pow(calcSum(xList), 2));
 		return numerator / denominator;
