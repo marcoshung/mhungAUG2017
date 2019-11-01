@@ -21,6 +21,8 @@ public class Console {
 		
 		if(input.equals("file")) {
 			System.out.println("Enter the name of the file you want to read from");
+			//expected result from test case is 1.17x + 19.39
+
 			String fileName = console.nextLine();
 			Scanner in = new Scanner (new File (fileName)); 
 			while(in.hasNext()) {
